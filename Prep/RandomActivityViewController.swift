@@ -22,8 +22,26 @@ class RandomActivityViewController: UIViewController {
         }
     }
     
+    
+    //borrowed code from Stack Overflow on how to make REST API call and made some tweaks 
     @IBAction func onRandomButton(_ sender: Any) {
         //make an API call here to suggest a random activity to do
+        let url = URL(string: "http://www.boredapi.com/api/activity")!
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        //add the parameters here as needed
+        let parameters = ["activity":"Draw and color a Mandala"]
+
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+        //the service response is here
+            print(response)
+        })
+
+        task.resume()
     }
     
     override func viewDidLoad() {
