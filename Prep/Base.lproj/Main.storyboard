@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Prep Note!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0W-qv-lau">
-                                <rect key="frame" x="65" y="71" width="284" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykk-eO-0Ya">
                                 <rect key="frame" x="41" y="139" width="109" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -92,9 +85,6 @@
                                 <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
                                     <!--2037-12-31 11:00:00 +0000-->
                                 </date>
-                                <connections>
-                                    <action selector="startDateChosen:" destination="P5n-zJ-vzI" eventType="valueChanged" id="y1L-0s-vgy"/>
-                                </connections>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ybI-j2-xjR">
                                 <rect key="frame" x="41" y="551" width="335" height="55"/>
@@ -138,6 +128,13 @@
                                     <action selector="submitButton:" destination="P5n-zJ-vzI" eventType="touchUpInside" id="Hgf-Vx-BcQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Prep Note!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0W-qv-lau">
+                                <rect key="frame" x="65" y="88" width="284" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c46-Rw-WMA"/>
                         <color key="backgroundColor" red="0.9770018943034976" green="1" blue="0.98328775083462883" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -153,7 +150,6 @@
                         <outlet property="bodyLabel" destination="knl-iW-AJZ" id="Z9S-Sa-CJM"/>
                         <outlet property="categoryLabel" destination="sve-b6-cSm" id="Etb-3w-75l"/>
                         <outlet property="endDateChosen" destination="ybI-j2-xjR" id="4TW-rW-i3g"/>
-                        <outlet property="startDate" destination="wDd-TV-9NH" id="Cln-n5-fa5"/>
                         <outlet property="startDateChosen" destination="wDd-TV-9NH" id="ugb-Pp-Ode"/>
                     </connections>
                 </viewController>
