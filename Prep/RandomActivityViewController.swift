@@ -11,7 +11,28 @@ import UIKit
 class RandomActivityViewController: UIViewController {
     
     var activity = String() //() indicates it is a creation of something
+    @IBOutlet weak var randomActivityLabel: UILabel!
+    @IBOutlet weak var addToCalendarQuestionLabel: UILabel!
+    @IBOutlet weak var yesButton: UIButton!{
+        didSet{
+            yesButton.layer.cornerRadius = 0.5
+            yesButton.backgroundColor = #colorLiteral(red: 0, green: 0.5091355443, blue: 0.3028217256, alpha: 1)
+            yesButton.setTitleColor(.white, for: .normal)
+            yesButton.setTitle("Yes", for: .normal)
+            yesButton.layer.opacity = 0.0
+        }
+    }
+    @IBOutlet weak var noButton: UIButton!{
+        didSet{
+            noButton.layer.cornerRadius = 0.5
+            noButton.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+            noButton.setTitleColor(.white, for: .normal)
+            noButton.setTitle("No", for: .normal)
+            noButton.layer.opacity = 0.0
 
+        }
+    }
+    
     //Function makes button circular and orange and black "?"
     @IBOutlet weak var randomButton: UIButton!{
         didSet{
@@ -19,8 +40,11 @@ class RandomActivityViewController: UIViewController {
             randomButton.layer.cornerRadius = 0.5 * randomButton.bounds.size.width
             randomButton.backgroundColor = UIColor.orange
             
-            randomButton.titleLabel?.font = UIFont.systemFont(ofSize: 100)
-            randomButton.titleLabel?.textColor = UIColor.black
+            randomButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
+            randomButton.setTitle("?", for: .normal)
+            randomButton.setTitleColor(.black, for: .normal)
+
+            
         }
     }
     
@@ -46,8 +70,23 @@ class RandomActivityViewController: UIViewController {
                         self.activity = value as! String
                     }
                 }
-
+            
                 print(self.activity)
+                //animate
+                UIView.animate(withDuration: 1,
+                                       delay: 0,
+                                       options: [.allowUserInteraction, .curveEaseIn],
+                                       animations: {
+                                        self.randomActivityLabel.layer.opacity = 0.0
+                                        self.addToCalendarQuestionLabel.layer.opacity = 0.0
+                                        self.randomActivityLabel.text = "\(self.activity)"
+                                        self.randomActivityLabel.layer.opacity = 1.0
+                                        self.addToCalendarQuestionLabel.text = "Add to Calendar?"
+                                        self.addToCalendarQuestionLabel.layer.opacity = 1.0
+                                        self.yesButton.layer.opacity = 1.0
+                                        self.noButton.layer.opacity = 1.0
+                                       })
+                //show buttons of adding to calendar or not here!
                 }
             }
         task.resume()
