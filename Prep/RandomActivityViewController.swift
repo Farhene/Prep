@@ -43,11 +43,19 @@ class RandomActivityViewController: UIViewController {
             randomButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
             randomButton.setTitle("?", for: .normal)
             randomButton.setTitleColor(.black, for: .normal)
-
-            
         }
     }
     
+    @IBAction func onNoButton(_ sender: Any) {
+        UIView.animate(withDuration: 1,
+                               delay: 0,
+                               options: [.allowUserInteraction, .curveEaseOut],
+                               animations: {
+                                self.addToCalendarQuestionLabel.layer.opacity = 0.0
+                                self.yesButton.layer.opacity = 0.0
+                                self.noButton.layer.opacity = 0.0
+                               })
+    }
     
     //borrowed code from Stack Overflow on how to make REST API call and made some tweaks 
     @IBAction func onRandomButton(_ sender: Any) {
@@ -90,7 +98,10 @@ class RandomActivityViewController: UIViewController {
                 }
             }
         task.resume()
-        
+    }
+    @IBAction func onYesButton(_ sender: Any) {
+        //here I should segue to the AddNoteViewController and also send over the current "\(self.activity)" message to the Note
+        //Category would be put as Random Activity
     }
     
     override func viewDidLoad() {

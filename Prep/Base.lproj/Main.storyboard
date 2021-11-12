@@ -275,11 +275,17 @@
                                 <rect key="frame" x="50" y="612" width="82" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onYesButton:" destination="8uR-NX-3Be" eventType="touchUpInside" id="Rto-dV-ZaX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2N-5B-Ohz">
                                 <rect key="frame" x="282" y="612" width="82" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onNoButton:" destination="8uR-NX-3Be" eventType="touchUpInside" id="8X1-DQ-Eh8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Nj-xT-8Hx"/>
