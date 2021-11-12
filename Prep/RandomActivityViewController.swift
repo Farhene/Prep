@@ -70,7 +70,7 @@ class RandomActivityViewController: UIViewController {
                 print(error.localizedDescription)
             }
             else if let data = data {
-                let dataArray = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let dataArray = try! JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as! [String: Any]
                 
                 for(key, value) in dataArray {
                     if(key == "activity")
