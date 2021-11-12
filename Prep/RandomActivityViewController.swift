@@ -9,6 +9,8 @@ import UIKit
 
 
 class RandomActivityViewController: UIViewController {
+    
+    var activity = String() //() indicates it is a creation of something
 
     //Function makes button circular and orange and black "?"
     @IBOutlet weak var randomButton: UIButton!{
@@ -27,21 +29,29 @@ class RandomActivityViewController: UIViewController {
     @IBAction func onRandomButton(_ sender: Any) {
         //make an API call here to suggest a random activity to do
         let url = URL(string: "http://www.boredapi.com/api/activity")!
+        
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            // This will run when the network request returns
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else if let data = data {
+                let dataArray = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                
+                for(key, value) in dataArray {
+                    if(key == "activity")
+                    {
+                        self.activity = value as! String
+                    }
+                }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-        //add the parameters here as needed
-        let parameters = ["activity":"Draw and color a Mandala"]
-
-        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-        //the service response is here
-            print(response)
-        })
-
+                print(self.activity)
+                }
+            }
         task.resume()
+        
     }
     
     override func viewDidLoad() {
