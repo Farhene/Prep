@@ -273,6 +273,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="onYesButton:" destination="8uR-NX-3Be" eventType="touchUpInside" id="Rto-dV-ZaX"/>
+                                    <segue destination="P5n-zJ-vzI" kind="showDetail" identifier="AddToCalendar" id="fEk-wb-Glr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2N-5B-Ohz">
@@ -393,6 +394,9 @@
             <point key="canvasLocation" x="3572" y="-633"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fEk-wb-Glr"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="calendar.badge.clock.rtl" catalog="system" width="128" height="108"/>

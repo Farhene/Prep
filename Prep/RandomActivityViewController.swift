@@ -102,6 +102,7 @@ class RandomActivityViewController: UIViewController {
     @IBAction func onYesButton(_ sender: Any) {
         //here I should segue to the AddNoteViewController and also send over the current "\(self.activity)" message to the Note
         //Category would be put as Random Activity
+        self.performSegue(withIdentifier: "AddToCalendar", sender: sender)
     }
     
     override func viewDidLoad() {
@@ -111,14 +112,22 @@ class RandomActivityViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+
+        if segue.identifier == "AddToCalendar" {
+            let addNoteViewController = segue.destination as! AddNoteViewController
+            addNoteViewController.notes = self.activity
+            addNoteViewController.category = "Random Activity"
+        }
+
     }
-    */
+    
 
 }

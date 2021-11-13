@@ -11,18 +11,24 @@ class AddNoteViewController: UIViewController {
     
     //helps to deal with objects in the CoreData database
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    
+    var category = String()
+    var notes = String()
     
     @IBOutlet weak var categoryLabel: UITextField!
     @IBOutlet weak var bodyLabel: UITextView!
     
     @IBOutlet weak var startDateChosen: UIDatePicker!
     @IBOutlet weak var endDateChosen: UIDatePicker!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        categoryLabel.text = category
+        bodyLabel.text = notes
+        
+    }
 
     @IBAction func skipTimeOption(_ sender: Any) {
         //submits non-dated notes
