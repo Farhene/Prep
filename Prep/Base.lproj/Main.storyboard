@@ -381,13 +381,13 @@
             </objects>
             <point key="canvasLocation" x="1088" y="-633"/>
         </scene>
-        <!--Feed-->
+        <!--Prep Notes-->
         <scene sceneID="SQr-hX-fwB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDN-iU-a8f" customClass="FeedNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="list.bullet.rectangle" catalog="system" id="XbA-kQ-XJT"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="0Rt-Jz-0IT"/>
+                    <navigationItem key="navigationItem" title="Prep Notes" id="0Rt-Jz-0IT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kQd-uo-KQw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -407,7 +407,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o77-Gb-dEh" customClass="CalendarNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar.badge.clock.rtl" catalog="system" id="9aA-l3-6Dm"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="D25-Ds-pkb"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="D25-Ds-pkb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GRU-sc-djL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
