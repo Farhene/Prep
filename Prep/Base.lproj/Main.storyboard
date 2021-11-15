@@ -309,24 +309,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-tP-q2z">
-                                <rect key="frame" x="79" y="411" width="242" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqe-nc-dN6" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="vmm-zF-3Qk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="akh-Jj-UJG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xqe-nc-dN6" firstAttribute="top" secondItem="akh-Jj-UJG" secondAttribute="top" id="Nsw-kp-70d"/>
+                            <constraint firstItem="akh-Jj-UJG" firstAttribute="trailing" secondItem="xqe-nc-dN6" secondAttribute="trailing" id="ZHI-sh-dCu"/>
+                            <constraint firstItem="xqe-nc-dN6" firstAttribute="leading" secondItem="akh-Jj-UJG" secondAttribute="leading" id="jBP-zq-S4I"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ee1-7X-qMq"/>
+                    <navigationItem key="navigationItem" id="Ee1-7X-qMq">
+                        <barButtonItem key="rightBarButtonItem" title="Undated" id="C1N-cD-wLJ">
+                            <connections>
+                                <segue destination="kRB-Xf-kaK" kind="show" id="HUc-rb-K44"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4J-jS-8Me" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4295.652173913044" y="144.64285714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="cyH-YZ-slc">
+            <objects>
+                <viewController id="ZKW-Lu-3hP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IeI-8z-xFp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show the Skipped Date Notes Here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0G-Jw-fIX">
+                                <rect key="frame" x="56" y="264" width="303" height="343"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6no-UO-hLj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Sx-8F-QQz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N0S-fq-QDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6085.507246376812" y="144.64285714285714"/>
+        </scene>
         <!--Add-->
         <scene sceneID="GpJ-X8-pfh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VLi-ov-kjS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VLi-ov-kjS" customClass="AddNoteNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add" image="plus" catalog="system" id="WoD-AY-Jfd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BU5-Gr-UQZ">
@@ -365,7 +404,7 @@
         <!--Calendar-->
         <scene sceneID="Gkf-e3-aBt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o77-Gb-dEh" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o77-Gb-dEh" customClass="CalendarNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar.badge.clock.rtl" catalog="system" id="9aA-l3-6Dm"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="D25-Ds-pkb"/>
@@ -385,7 +424,7 @@
         <!--Generate-->
         <scene sceneID="ZUD-aD-T0a">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kY8-rz-Ic2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kY8-rz-Ic2" customClass="RandomGeneratorViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Generate" image="cube" catalog="system" id="5Mr-tY-iWd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mTr-vP-3dj">
@@ -400,6 +439,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMa-0Z-gaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3572" y="-633"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w9e-zc-DQ5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kRB-Xf-kaK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="17A-La-KbX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bbb-c2-SAe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZKW-Lu-3hP" kind="relationship" relationship="rootViewController" id="ngz-qc-AdS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tQ-Mg-KPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5406" y="145"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
