@@ -8,6 +8,8 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
+    var test = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()

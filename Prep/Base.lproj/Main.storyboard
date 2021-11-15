@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkB-yV-uOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="-633"/>
+            <point key="canvasLocation" x="1087" y="145"/>
         </scene>
         <!--Feed Collection View Controller-->
         <scene sceneID="HY5-Uf-sSW">
@@ -226,7 +226,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nnb-E9-kF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317" y="-1008"/>
+            <point key="canvasLocation" x="2326" y="-1464"/>
         </scene>
         <!--Random Activity View Controller-->
         <scene sceneID="G0z-1W-iyE">
@@ -308,6 +308,12 @@
                     <view key="view" contentMode="scaleToFill" id="hG8-C2-kcf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-tP-q2z">
+                                <rect key="frame" x="79" y="411" width="242" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="akh-Jj-UJG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -315,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4J-jS-8Me" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4296" y="145"/>
+            <point key="canvasLocation" x="4295.652173913044" y="144.64285714285714"/>
         </scene>
         <!--Add-->
         <scene sceneID="GpJ-X8-pfh">
@@ -334,14 +340,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOq-o9-6Ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="-633"/>
+            <point key="canvasLocation" x="1088" y="-633"/>
         </scene>
         <!--Feed-->
         <scene sceneID="SQr-hX-fwB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDN-iU-a8f" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GDN-iU-a8f" customClass="FeedNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="list.bullet.rectangle" catalog="system" id="XbA-kQ-XJT"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="0Rt-Jz-0IT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kQd-uo-KQw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -361,6 +368,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o77-Gb-dEh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar.badge.clock.rtl" catalog="system" id="9aA-l3-6Dm"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="D25-Ds-pkb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GRU-sc-djL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -395,7 +403,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fEk-wb-Glr"/>
+        <segue reference="xNu-4z-c4V"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
