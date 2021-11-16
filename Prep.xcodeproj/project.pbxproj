@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		E0927FE92739C0EF0003B417 /* PrepNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0927FE72739C0EF0003B417 /* PrepNote+CoreDataClass.swift */; };
 		E0927FEA2739C0EF0003B417 /* PrepNote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0927FE82739C0EF0003B417 /* PrepNote+CoreDataProperties.swift */; };
 		E0C18391CC27C95748EB871B /* Pods_PrepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57186E77B37FC10D621AD14 /* Pods_PrepTests.framework */; };
+		E0CBBFEC274313DA00304006 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFEB274313DA00304006 /* SettingsViewController.swift */; };
+		E0CBBFEE2743446F00304006 /* AddNoteTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */; };
 		F0A15A7EF58A7F82469A9C5B /* Pods_Prep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEB9DADA10CAED43EF6AA22 /* Pods_Prep.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		E002FA5C27331265001C7337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E0927FE72739C0EF0003B417 /* PrepNote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrepNote+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0927FE82739C0EF0003B417 /* PrepNote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrepNote+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E0CBBFEB274313DA00304006 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTViewController.swift; sourceTree = "<group>"; };
 		E57186E77B37FC10D621AD14 /* Pods_PrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A6683B18C4607985E14EF6 /* Pods-Prep-PrepUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prep-PrepUITests.release.xcconfig"; path = "Target Support Files/Pods-Prep-PrepUITests/Pods-Prep-PrepUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +161,8 @@
 				E002FA5827331228001C7337 /* RandomActivityViewController.swift */,
 				E002FA5A2733124A001C7337 /* AddNoteViewController.swift */,
 				E002FA5C27331265001C7337 /* CalendarViewController.swift */,
+				E0CBBFEB274313DA00304006 /* SettingsViewController.swift */,
+				E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */,
 			);
 			path = Prep;
 			sourceTree = "<group>";
@@ -189,7 +195,6 @@
 				75C2882A2C0D3AD39B216E1F /* Pods-PrepTests.debug.xcconfig */,
 				ABC49F0EC48B2EC43F2B81FF /* Pods-PrepTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -439,9 +444,11 @@
 				E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */,
 				E002FA5327330511001C7337 /* FeedCollectionViewCell.swift in Sources */,
 				E002FA1E2727780B001C7337 /* AppDelegate.swift in Sources */,
+				E0CBBFEE2743446F00304006 /* AddNoteTViewController.swift in Sources */,
 				E002FA5527330525001C7337 /* FeedCollectionViewController.swift in Sources */,
 				E0927FEA2739C0EF0003B417 /* PrepNote+CoreDataProperties.swift in Sources */,
 				E002FA202727780B001C7337 /* SceneDelegate.swift in Sources */,
+				E0CBBFEC274313DA00304006 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

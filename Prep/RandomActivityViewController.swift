@@ -103,6 +103,14 @@ class RandomActivityViewController: UIViewController {
         //here I should segue to the AddNoteViewController and also send over the current "\(self.activity)" message to the Note
         //Category would be put as Random Activity
         self.performSegue(withIdentifier: "AddToCalendar", sender: sender)
+        UIView.animate(withDuration: 1,
+                               delay: 0,
+                               options: [.allowUserInteraction, .curveEaseOut],
+                               animations: {
+                                self.addToCalendarQuestionLabel.layer.opacity = 0.0
+                                self.yesButton.layer.opacity = 0.0
+                                self.noButton.layer.opacity = 0.0
+                               })
     }
     
     override func viewDidLoad() {
