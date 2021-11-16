@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    var input = String()
+    
     //add context here to have clearNButton delete all notes from CoreData
     @IBOutlet weak var darkModeSlider: UISlider!
     @IBOutlet weak var darkModeButton: UISegmentedControl!
@@ -36,6 +38,7 @@ class SettingsViewController: UIViewController {
 //            }
 //
 //        self.view.layoutIfNeeded()
+        print(input)
 
     }
     
