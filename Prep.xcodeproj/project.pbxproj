@@ -29,6 +29,8 @@
 		E0C18391CC27C95748EB871B /* Pods_PrepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57186E77B37FC10D621AD14 /* Pods_PrepTests.framework */; };
 		E0CBBFEC274313DA00304006 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFEB274313DA00304006 /* SettingsViewController.swift */; };
 		E0CBBFEE2743446F00304006 /* AddNoteTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */; };
+		E0FB3CAB274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB3CAA274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift */; };
+		E0FB3CAD274C475A00A4C7A5 /* FeedSpecificNoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FB3CAC274C475A00A4C7A5 /* FeedSpecificNoteCollectionViewCell.swift */; };
 		F0A15A7EF58A7F82469A9C5B /* Pods_Prep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEB9DADA10CAED43EF6AA22 /* Pods_Prep.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		E0927FE82739C0EF0003B417 /* PrepNote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrepNote+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0CBBFEB274313DA00304006 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTViewController.swift; sourceTree = "<group>"; };
+		E0FB3CAA274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSpecificNoteCollectionViewController.swift; sourceTree = "<group>"; };
+		E0FB3CAC274C475A00A4C7A5 /* FeedSpecificNoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSpecificNoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		E57186E77B37FC10D621AD14 /* Pods_PrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A6683B18C4607985E14EF6 /* Pods-Prep-PrepUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prep-PrepUITests.release.xcconfig"; path = "Target Support Files/Pods-Prep-PrepUITests/Pods-Prep-PrepUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +173,8 @@
 				E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */,
 				E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */,
 				E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */,
+				E0FB3CAA274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift */,
+				E0FB3CAC274C475A00A4C7A5 /* FeedSpecificNoteCollectionViewCell.swift */,
 			);
 			path = Prep;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				E002FA282727780B001C7337 /* Prep.xcdatamodeld in Sources */,
 				E002FA222727780B001C7337 /* ViewController.swift in Sources */,
 				E002FA5B2733124A001C7337 /* AddNoteViewController.swift in Sources */,
+				E0FB3CAB274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift in Sources */,
 				E0927FE92739C0EF0003B417 /* PrepNote+CoreDataClass.swift in Sources */,
 				E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */,
 				E002FA5327330511001C7337 /* FeedCollectionViewCell.swift in Sources */,
@@ -453,6 +460,7 @@
 				E00E2702274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift in Sources */,
 				E0CBBFEE2743446F00304006 /* AddNoteTViewController.swift in Sources */,
 				E002FA5527330525001C7337 /* FeedCollectionViewController.swift in Sources */,
+				E0FB3CAD274C475A00A4C7A5 /* FeedSpecificNoteCollectionViewCell.swift in Sources */,
 				E0927FEA2739C0EF0003B417 /* PrepNote+CoreDataProperties.swift in Sources */,
 				E0872DB327437B61003F2BB2 /* UndatedNotesTableViewController.swift in Sources */,
 				E002FA202727780B001C7337 /* SceneDelegate.swift in Sources */,

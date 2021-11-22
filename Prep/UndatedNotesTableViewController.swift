@@ -29,7 +29,6 @@ class UndatedNotesTableViewController: UITableViewController {
         print(notes)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 3
                     
         
         print(input)
@@ -49,10 +48,19 @@ class UndatedNotesTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let note = notes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UndatedNotesCell", for: indexPath) as! UndatedNotesTableViewCell
+    
 
         // Configure the cell...
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = #colorLiteral(red: 0, green: 0.6111619473, blue: 0.5249490142, alpha: 1)
+            cell.bodyNotes?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        } else {
+            cell.backgroundColor = #colorLiteral(red: 0.5912877917, green: 1, blue: 0.9412642121, alpha: 1)
+            cell.bodyNotes?.textColor = #colorLiteral(red: 0, green: 0.3143163919, blue: 0.3069375157, alpha: 1)
+        }
         cell.bodyNotes?.text = note.body
 
         return cell
@@ -110,25 +118,4 @@ class UndatedNotesTableViewController: UITableViewController {
             print("deleted!")
         }
     }
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
-        //Task 1 - find selected note
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)!
-        //let note = movies[indexPath.row]
-                
-        // Task 2 - store to next VC
-        //let detailNoteVC = segue.destination as! MovieDetailsViewController
-        //detailNoteVC.movie = note
-                
-        //while transitioning, this disables the highlighted feature of each cell that was selected
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-
 }

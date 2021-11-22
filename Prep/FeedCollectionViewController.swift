@@ -18,7 +18,7 @@ class FeedCollectionViewController: UICollectionViewController {
     
     //global variable of all items to fetch from the entity from CoreData
     private var notes = [PrepNote]()
-    private var categories = [PrepCategory]()
+    //private var categories = [PrepCategory]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,11 +72,18 @@ class FeedCollectionViewController: UICollectionViewController {
         let note = notes[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         
-        cell.categoryFeedCell?.text = note.category
         // Configure the cell
-    
+        cell.categoryFeedCell?.text = note.category
+        
+        cell.categoryFeedCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
+       
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+            cell.layer.cornerRadius = 20
+            cell.clipsToBounds = true
+        }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -98,10 +105,6 @@ class FeedCollectionViewController: UICollectionViewController {
     func getAllNotes() {
         do {
             notes = try context.fetch(PrepNote.fetchRequest())
-            
-            for i in notes {
-                print("Note: ", i.category, " ", i.startDate)
-            }
             self.collectionView.reloadData()
         }
         catch{
@@ -123,7 +126,21 @@ class FeedCollectionViewController: UICollectionViewController {
         }
     }
 
-    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        //Task 1 - find selected note
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+        //let note = notes[indexPath.row]
+                
+                        // Task 2 - store to next VC
+        //let deetailNotesListVC = segue.destination as! PrepNotesFromCategory
+        
+                        //through category I should be able to grab ALL notes related to that categroy through relationship
+        //deetailNotesListVC.category = note.category
+                
+                        //while transitioning, this disables the highlighted feature of each cell that was selected
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 
     
     
