@@ -22,6 +22,7 @@
 		E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5827331228001C7337 /* RandomActivityViewController.swift */; };
 		E002FA5B2733124A001C7337 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5A2733124A001C7337 /* AddNoteViewController.swift */; };
 		E002FA5D27331265001C7337 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5C27331265001C7337 /* CalendarViewController.swift */; };
+		E00E2702274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */; };
 		E0872DB327437B61003F2BB2 /* UndatedNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */; };
 		E0927FE92739C0EF0003B417 /* PrepNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0927FE72739C0EF0003B417 /* PrepNote+CoreDataClass.swift */; };
 		E0927FEA2739C0EF0003B417 /* PrepNote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0927FE82739C0EF0003B417 /* PrepNote+CoreDataProperties.swift */; };
@@ -76,6 +77,7 @@
 		E002FA5827331228001C7337 /* RandomActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomActivityViewController.swift; sourceTree = "<group>"; };
 		E002FA5A2733124A001C7337 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		E002FA5C27331265001C7337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndatedNotesTableViewCell.swift; sourceTree = "<group>"; };
 		E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndatedNotesTableViewController.swift; sourceTree = "<group>"; };
 		E0927FE72739C0EF0003B417 /* PrepNote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrepNote+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E0927FE82739C0EF0003B417 /* PrepNote+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrepNote+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				E0CBBFEB274313DA00304006 /* SettingsViewController.swift */,
 				E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */,
 				E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */,
+				E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */,
 			);
 			path = Prep;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */,
 				E002FA5327330511001C7337 /* FeedCollectionViewCell.swift in Sources */,
 				E002FA1E2727780B001C7337 /* AppDelegate.swift in Sources */,
+				E00E2702274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift in Sources */,
 				E0CBBFEE2743446F00304006 /* AddNoteTViewController.swift in Sources */,
 				E002FA5527330525001C7337 /* FeedCollectionViewController.swift in Sources */,
 				E0927FEA2739C0EF0003B417 /* PrepNote+CoreDataProperties.swift in Sources */,

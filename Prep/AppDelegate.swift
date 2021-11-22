@@ -76,6 +76,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+//    func cleanDelete() -> Bool {
+//        let context = persistentContainer.viewContext
+//        let delete = NSBatchDeleteRequest(fetchRequest: PrepNote.fetchRequest())
+//        do {
+//            try context.execute(delete)
+//            return true
+//        }
+//        catch {
+//            return false
+//        }
+//        
+//    }
 
 }
 

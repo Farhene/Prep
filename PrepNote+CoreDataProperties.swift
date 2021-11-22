@@ -16,10 +16,10 @@ extension PrepNote {
         return NSFetchRequest<PrepNote>(entityName: "PrepNote")
     }
 
-    @NSManaged public var body: String?
-    @NSManaged public var category: String?
-    @NSManaged public var endDate: Date?
-    @NSManaged public var startDate: Date?
+    @NSManaged public var body: String
+    @NSManaged public var category: String
+    @NSManaged public var endDate: Date
+    @NSManaged public var startDate: Date 
 
 }
 

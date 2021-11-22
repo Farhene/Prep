@@ -82,12 +82,15 @@ class AddNoteViewController: UIViewController {
         newItem.category = category
         newItem.startDate = startDate
         newItem.endDate = endDate
+        
+        let categoryOfItem = PrepCategory(context: context)
+        categoryOfItem.category = category
 
         do {
             try context.save()
         }
         catch{
-            //error
+            print("Error saving note with date!")
         }
     }
 
@@ -95,27 +98,17 @@ class AddNoteViewController: UIViewController {
         let newItem = PrepNote(context: context)
         newItem.body = body
         newItem.category = category
+        
+        //default date is 1/1/2000
+        
+        let categoryOfItem = PrepCategory(context: context)
+        categoryOfItem.category = category
 
         do {
             try context.save()
         }
         catch{
-            //error
+            print("Error saving note without date!")
         }
     }
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         Get the new view controller using segue.destination.
-//         Pass the selected object to the new view controller.
-//        if(segue.identifier == "addNoDate" || segue.identifier == "addWithDate"){
-//            let barViewControllers = segue.destination as? UITabBarController
-//            let nav = barViewControllers?.viewControllers![0] as? UINavigationController
-//            let destinationViewController = nav?.topViewController as? FeedCollectionViewController
-//            destinationViewController?.test = "test"
-//        }
-//    }
-    
-
 }

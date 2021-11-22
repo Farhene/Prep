@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 private let reuseIdentifier = "FeedCollectionViewCell"
 
@@ -16,27 +18,31 @@ class FeedCollectionViewController: UICollectionViewController {
     
     //global variable of all items to fetch from the entity from CoreData
     private var notes = [PrepNote]()
+    private var categories = [PrepCategory]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        title = "Prep Notes"
+        getAllNotes()
+
         collectionView.delegate = self
         collectionView.dataSource = self
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
                 
-        layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
                 
         let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
-        layout.itemSize = CGSize(width: width, height: width*1.1)
-        
-        title = "Prep Notes"
+        layout.itemSize = CGSize(width: width, height: width*1)
+    
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        // Register cell classes
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -77,9 +83,30 @@ class FeedCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let targetNote = notes[indexPath.row]
+        
+        let sheet = UIAlertController(title: "\(targetNote.category)",
+                                      message: "View or Delete?",
+                                      preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            self?.deleteNote(note: targetNote)
+        }))
+        sheet.addAction(UIAlertAction(title: "View", style: .default, handler: nil ))
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil ))
+        
+        present(sheet, animated: true)
+    }
+    
+    //---------------------------- Manipulating PrepNotes here    
     func getAllNotes() {
         do {
             notes = try context.fetch(PrepNote.fetchRequest())
+            
+            for i in notes {
+                print("Note: ", i.category, " ", i.startDate)
+            }
             self.collectionView.reloadData()
         }
         catch{
@@ -87,6 +114,21 @@ class FeedCollectionViewController: UICollectionViewController {
             print("Error!")
         }
     }
+    
+    func deleteNote(note: PrepNote){
+        
+        context.delete(note)
+        
+        do {
+            try context.save()
+            self.collectionView.reloadData()
+        }
+        catch {
+            print("deleted!")
+        }
+    }
+
+    
 
     
     

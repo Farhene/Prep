@@ -74,6 +74,13 @@ class AddNoteTViewController: UITableViewController {
 
         do {
             try context.save()
+            do {
+                try context.fetch(PrepNote.fetchRequest())
+            }
+            catch{
+                //error
+                print("Error!")
+            }
         }
         catch{
             print("Error: ")
@@ -115,6 +122,13 @@ class AddNoteTViewController: UITableViewController {
 
         do {
             try context.save()
+            do {
+                try context.fetch(PrepNote.fetchRequest())
+            }
+            catch{
+                //error
+                print("Error!")
+            }
         }
         catch{
             print("Error: ")
