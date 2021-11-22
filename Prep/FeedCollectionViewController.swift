@@ -31,20 +31,15 @@ class FeedCollectionViewController: UICollectionViewController {
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+            
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-                
+                    
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
-                
+                    
         let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
         layout.itemSize = CGSize(width: width, height: width*1)
     
-
-//        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     
