@@ -8,5 +8,7 @@
 import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var CategoryCellLabel: UILabel!
+    
+    @IBOutlet weak var categoryFeedCell: UILabel!
+    
 }

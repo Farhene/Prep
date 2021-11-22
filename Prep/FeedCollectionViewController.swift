@@ -7,19 +7,33 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "FeedCollectionViewCell"
 
 class FeedCollectionViewController: UICollectionViewController {
     
     //helps to deal with objects in the CoreData database
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    //global variable of all items to fetch from the entity from CoreData
+    private var notes = [PrepNote]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                
+        layout.minimumLineSpacing = 2
+        layout.minimumInteritemSpacing = 2
+                
+        let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
+        layout.itemSize = CGSize(width: width, height: width*1.1)
+        
+        title = "Prep Notes"
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -48,29 +62,48 @@ class FeedCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        //        var total = 0
-        //        do {
-        //            let total_notes = try context.fetch(PrepNote.fetchRequest())
-        //            total = total_notes.count
-        //        }
-        //        catch {
-        //            //error
-        //        }
-        //        return total
-        return 1
+        return notes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let note = notes[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
+        
+        cell.categoryFeedCell?.text = note.category
         // Configure the cell
     
         return cell
     }
+    
+    func getAllNotes() {
+        do {
+            notes = try context.fetch(PrepNote.fetchRequest())
+            self.collectionView.reloadData()
+        }
+        catch{
+            //error
+            print("Error!")
+        }
+    }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*

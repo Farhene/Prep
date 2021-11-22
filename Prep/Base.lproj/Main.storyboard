@@ -246,7 +246,7 @@
                                     </subviews>
                                 </collectionViewCellContentView>
                                 <connections>
-                                    <outlet property="CategoryCellLabel" destination="LAB-9L-3Iq" id="EhV-fY-Ndw"/>
+                                    <outlet property="categoryFeedCell" destination="LAB-9L-3Iq" id="s9p-SK-mu2"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

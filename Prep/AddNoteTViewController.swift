@@ -40,11 +40,13 @@ class AddNoteTViewController: UITableViewController {
         return 7
     }
     
+    // ---------------------------- Submitting WITHOUT Date --------------------------------
     
     @IBAction func skipTimeOption(_ sender: Any) {
         if(self.categoryLabel.text != "" && self.bodyLabel.text != ""){
             //submits non-dated notes
             createNoteNoDate(category: categoryLabel.text!, body: bodyLabel.text!)
+                        
             //self.performSegue(withIdentifier: "addNoDate", sender: sender)
             let alert = UIAlertController(title: "Skip Time?", message: "You cannot undo this action", preferredStyle: .actionSheet)
 
@@ -63,7 +65,23 @@ class AddNoteTViewController: UITableViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    //function uses Core Data
+    func createNoteNoDate(category: String, body: String){
+        let newItem = PrepNote(context: context)
+        newItem.body = body
+        newItem.category = category
 
+        do {
+            try context.save()
+        }
+        catch{
+            print("Error: ")
+        }
+    }
+
+    
+    // ---------------------------------- Submitting WITH Date --------------------------------
     @IBAction func submitButton(_ sender: Any) {
         if(self.categoryLabel.text != "" && self.bodyLabel.text != ""){
             //submits dated notes
@@ -87,6 +105,7 @@ class AddNoteTViewController: UITableViewController {
         }
     }
 
+    //function uses Core Data
     func createNotewithDate(category: String, body: String, startDate: Date, endDate: Date){
         let newItem = PrepNote(context: context)
         newItem.body = body
@@ -98,20 +117,7 @@ class AddNoteTViewController: UITableViewController {
             try context.save()
         }
         catch{
-            print("Error: ", error)
-        }
-    }
-
-    func createNoteNoDate(category: String, body: String){
-        let newItem = PrepNote(context: context)
-        newItem.body = body
-        newItem.category = category
-
-        do {
-            try context.save()
-        }
-        catch{
-            print("Error: ", error)
+            print("Error: ")
         }
     }
 
