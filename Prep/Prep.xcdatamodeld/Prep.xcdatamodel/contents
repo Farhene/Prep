@@ -6,13 +6,13 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String"/>
-        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" defaultDateTimeInterval="-31600800" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" defaultDateTimeInterval="-31600800" usesScalarValueType="NO"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="notes" inverseEntity="Category"/>
     </entity>
     <elements>
         <element name="Category" positionX="-446.7379150390625" positionY="-45.08186340332031" width="128" height="73"/>
-        <element name="Note" positionX="-226.5740356445312" positionY="62.45062255859375" width="128" height="118"/>
+        <element name="Note" positionX="-226.5740356445312" positionY="62.45062255859375" width="128" height="104"/>
     </elements>
 </model>

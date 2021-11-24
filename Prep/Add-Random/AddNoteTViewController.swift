@@ -113,12 +113,6 @@ class AddNoteTViewController: UITableViewController {
         cell.backgroundColor = UIColor.clear
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-
-    }
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.backgroundColor = UIColor.clear
-    }
     
     // ---------------------------- Submitting WITHOUT Date --------------------------------
     
@@ -150,23 +144,23 @@ class AddNoteTViewController: UITableViewController {
     //---------------------------------             HELP!!!!!!!!!!!
     // it doesn't recognize Note here as well ;(
     func createNoteNoDate(category: String, body: String){
-//        let newItem = Note(context: context)
-//        newItem.body = body
-//        newItem.category?.category = category
-//
-//        do {
-//            try context.save()
-//            do {
-//                try context.fetch(Note.fetchRequest())
-//            }
-//            catch{
-//                //error
-//                print("Error!")
-//            }
-//        }
-//        catch{
-//            print("Error: ")
-//        }
+        let newItem = Note(context: context)
+        newItem.body = body
+        newItem.category?.category = category
+
+        do {
+            try context.save()
+            do {
+                try context.fetch(Note.fetchRequest())
+            }
+            catch{
+                //error
+                print("Error!")
+            }
+        }
+        catch{
+            print("Error: ")
+        }
     }
 
     
@@ -198,26 +192,26 @@ class AddNoteTViewController: UITableViewController {
     //---------------------------------             HELP!!!!!!!!!!!
     // again it does not recognize note!
     func createNotewithDate(category: String, body: String, startDate: Date, endDate: Date){
-//        let newItem = Note(context: context)
-//        newItem.body = body
-//        newItem.startDate = startDate
-//        newItem.endDate = endDate
-//
-//        // Professor, here I tried to access the category attribute of the Category entity through Note's category relationship to the cateogory in Category data model.
-//        newItem.category?.category = category
-//
-//        do {
-//            try context.save()
-//            do {
-//                try context.fetch(Note.fetchRequest())
-//            }
-//            catch{
-//                //error
-//                print("Error!")
-//            }
-//        }
-//        catch{
-//            print("Error: ")
-//        }
+        let newItem = Note(context: context)
+        newItem.body = body
+        newItem.startDate = startDate
+        newItem.endDate = endDate
+
+        // Professor, here I tried to access the category attribute of the Category entity through Note's category relationship to the cateogory in Category data model.
+        newItem.category?.category = category
+
+        do {
+            try context.save()
+            do {
+                try context.fetch(Note.fetchRequest())
+            }
+            catch{
+                //error
+                print("Error!")
+            }
+        }
+        catch{
+            print("Error: ")
+        }
     }
 }
