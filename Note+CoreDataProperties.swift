@@ -20,6 +20,6 @@ extension Note {
     @NSManaged public var endDate: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var startDate: Date?
-    @NSManaged public var category: Category?
+    @NSManaged public var category: Categ?
 
 }

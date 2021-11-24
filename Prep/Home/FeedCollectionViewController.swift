@@ -5,9 +5,6 @@
 //  Created by Farhene Sultana on 11/3/21.
 //
 
-
-// -------------- HELP!! CORE DATA PROBLEMS
-
 import UIKit
 import Foundation
 
@@ -20,7 +17,7 @@ class FeedCollectionViewController: UICollectionViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //global variable of all items to fetch from the entity from CoreData
-    private var categories = [Category]()
+    private var categories = [Categ]()
     
     let defaults = UserDefaults.standard
 
@@ -92,8 +89,7 @@ class FeedCollectionViewController: UICollectionViewController {
         let category = categories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         
-        //Professor, I am not sure why it does not recognize the category attribute her!!
-        //cell.categoryFeedCell?.text = category.category
+        cell.categoryFeedCell?.text = category.category
 
         
         cell.categoryFeedCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
@@ -109,11 +105,10 @@ class FeedCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let targetCategory = categories[indexPath.row]
-        //print("Note chosen: ", targetCategory.category)
+        print("Note chosen: ", targetCategory.category)
         
         
         // I will change to make the sheet ONLY appear when user does LONG press gesture
-        // So you can ignore these lines 110-118
 //        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
 //                                      message: "View or Delete?",
 //                                      preferredStyle: .actionSheet)
@@ -130,11 +125,10 @@ class FeedCollectionViewController: UICollectionViewController {
     
     //---------------------------- Manipulating Categories here
     
-    //---------------------------------             HELP!!!!!!!!!!!
 
     func getAllCategories() {
         do {
-           // categories = try context.fetch(Category.fetchRequest())
+            categories = try context.fetch(Categ.fetchRequest())
             self.collectionView.reloadData()
         }
         catch{
@@ -146,9 +140,9 @@ class FeedCollectionViewController: UICollectionViewController {
     //---------------------------------             HELP!!!!!!!!!!!
 
     
-    func deleteNote(category: Category){
+    func deleteNote(category: Categ){
         
-        //context.delete(category)
+        context.delete(category)
         
         do {
             try context.save()

@@ -11,5 +11,6 @@
 import UIKit
 
 class FeedSpecificNoteCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var noteFromCategoryCell: UILabel!
     
 }

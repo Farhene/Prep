@@ -197,7 +197,6 @@ class AddNoteTViewController: UITableViewController {
         newItem.startDate = startDate
         newItem.endDate = endDate
 
-        // Professor, here I tried to access the category attribute of the Category entity through Note's category relationship to the cateogory in Category data model.
         newItem.category?.category = category
 
         do {

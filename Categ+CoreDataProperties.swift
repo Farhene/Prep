@@ -1,5 +1,5 @@
 //
-//  Category+CoreDataProperties.swift
+//  Categ+CoreDataProperties.swift
 //  
 //
 //  Created by Farhene Sultana on 11/23/21.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Category {
+extension Categ {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
-        return NSFetchRequest<Category>(entityName: "Category")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Categ> {
+        return NSFetchRequest<Categ>(entityName: "Categ")
     }
 
     @NSManaged public var category: String?

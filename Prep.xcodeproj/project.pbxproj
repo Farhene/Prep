@@ -71,10 +71,10 @@
 		E002FA5827331228001C7337 /* RandomActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomActivityViewController.swift; sourceTree = "<group>"; };
 		E002FA5C27331265001C7337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndatedNotesTableViewCell.swift; sourceTree = "<group>"; };
-		E077E034274EB7FB0021ECD8 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "Prep/Model/Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		E077E035274EB7FB0021ECD8 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "Prep/Model/Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		E077E036274EB7FB0021ECD8 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "Prep/Model/Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		E077E037274EB7FB0021ECD8 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "Prep/Model/Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E077E034274EB7FB0021ECD8 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E077E035274EB7FB0021ECD8 /* Categ+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categ+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E077E036274EB7FB0021ECD8 /* Categ+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categ+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E077E037274EB7FB0021ECD8 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndatedNotesTableViewController.swift; sourceTree = "<group>"; };
 		E0CBBFEB274313DA00304006 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTViewController.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				E077E034274EB7FB0021ECD8 /* Note+CoreDataProperties.swift */,
-				E077E035274EB7FB0021ECD8 /* Category+CoreDataProperties.swift */,
-				E077E036274EB7FB0021ECD8 /* Category+CoreDataClass.swift */,
+				E077E035274EB7FB0021ECD8 /* Categ+CoreDataProperties.swift */,
+				E077E036274EB7FB0021ECD8 /* Categ+CoreDataClass.swift */,
 				E077E037274EB7FB0021ECD8 /* Note+CoreDataClass.swift */,
 			);
 			name = Model;

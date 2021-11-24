@@ -276,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="4837.68115942029" y="-739.28571428571422"/>
         </scene>
-        <!--Feed Specific Note Collection View Controller-->
+        <!--Feed Collection View Controller-->
         <scene sceneID="VoZ-9m-6cY">
             <objects>
-                <collectionViewController storyboardIdentifier="goToSpecificNotes" id="se1-CK-irV" customClass="FeedSpecificNoteCollectionViewController" customModule="Prep" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="goToSpecificNotes" id="se1-CK-irV" customClass="FeedCollectionViewController" customModule="Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="goToSpecificNotes" dataMode="prototypes" id="Uvr-Q4-Spl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +291,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PrepListCell" id="Mkp-Fx-ufP" customClass="FeedSpecificNoteCollectionViewCell" customModule="Prep" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedSpecificNoteCollectionViewCell" id="Mkp-Fx-ufP" customClass="FeedSpecificNoteCollectionViewCell" customModule="Prep" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EY3-H6-9Z3">
@@ -308,6 +308,9 @@
                                     </subviews>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="200" height="220"/>
+                                <connections>
+                                    <outlet property="noteFromCategoryCell" destination="5tg-c0-FPf" id="nRJ-Z3-BtU"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
