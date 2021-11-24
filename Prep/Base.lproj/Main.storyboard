@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="lwk-XJ-Un3">
+                            <tableViewSection headerTitle="" id="lwk-XJ-Un3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="69" id="wyq-s8-MR4">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="69"/>
@@ -203,10 +203,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="B3T-Bi-dIo"/>
                     <connections>
+                        <outlet property="addNoteTitle" destination="Wjx-Ct-gPn" id="cv9-rH-kgv"/>
                         <outlet property="bodyLabel" destination="zYh-q8-7jV" id="JiQ-qi-C9l"/>
+                        <outlet property="categTitle" destination="t8Q-eK-1Qc" id="5wc-pc-qVN"/>
                         <outlet property="categoryLabel" destination="tDC-9i-3c0" id="EOq-8W-yQ9"/>
                         <outlet property="endDateChosen" destination="sKO-Df-pyE" id="N3s-9H-Ntx"/>
+                        <outlet property="endDateTitle" destination="teZ-rX-rFf" id="VGO-Ha-1Ln"/>
+                        <outlet property="notesTitle" destination="uim-Kh-r7t" id="PaD-ej-8Im"/>
+                        <outlet property="skipTimeButton" destination="3bn-0d-xMj" id="sw9-0A-QpW"/>
                         <outlet property="startDateChosen" destination="PNG-E4-Wki" id="fLj-a4-G0j"/>
+                        <outlet property="startDateTitle" destination="eNo-8s-cTc" id="foy-Cj-gjj"/>
+                        <outlet property="submitTimeButton" destination="OxR-cu-3IK" id="AjQ-p7-Frh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14p-rj-iC8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -486,6 +493,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Random Activity Generator" id="okd-wA-zUi"/>
                     <connections>
+                        <outlet property="activityTitle" destination="A2c-eZ-isg" id="8NN-wV-XwE"/>
                         <outlet property="addToCalendarQuestionLabel" destination="X2z-3F-Pfh" id="Id6-hv-sfw"/>
                         <outlet property="noButton" destination="e2N-5B-Ohz" id="j7t-dj-mBh"/>
                         <outlet property="randomActivityLabel" destination="5nS-fv-kOY" id="G80-Ti-qa8"/>
@@ -546,6 +554,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calendarView" destination="xqe-nc-dN6" id="evF-l9-6xO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4J-jS-8Me" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

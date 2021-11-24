@@ -24,8 +24,8 @@ class FeedCollectionViewController: UICollectionViewController {
     
     let defaults = UserDefaults.standard
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         updateTheme()
             
         title = "Prep Categories"
@@ -63,12 +63,12 @@ class FeedCollectionViewController: UICollectionViewController {
         if (mode == "light") {
             // Apply your light theme
             print("light view")
-            view.backgroundColor = UIColor.lightestTeal
+            collectionView.backgroundColor = UIColor.lightestTeal
         }
         else if(mode == "dark"){
             // Apply your dark theme.
             print("dark view")
-            view.backgroundColor = UIColor.darkestTeal
+            collectionView.backgroundColor = UIColor.darkestTeal
         }
     }
 
@@ -93,7 +93,7 @@ class FeedCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         
         //Professor, I am not sure why it does not recognize the category attribute her!!
-        cell.categoryFeedCell?.text = category.category
+        //cell.categoryFeedCell?.text = category.category
 
         
         cell.categoryFeedCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
@@ -109,20 +109,20 @@ class FeedCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let targetCategory = categories[indexPath.row]
-        print("Note chosen: ", targetCategory.category)
+        //print("Note chosen: ", targetCategory.category)
         
         
         // I will change to make the sheet ONLY appear when user does LONG press gesture
         // So you can ignore these lines 110-118
-        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
-                                      message: "View or Delete?",
-                                      preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            self?.deleteNote(category: targetCategory)
-        }))
-        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil ))
-        
-        present(sheet, animated: true)
+//        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
+//                                      message: "View or Delete?",
+//                                      preferredStyle: .actionSheet)
+//        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+//            self?.deleteNote(category: targetCategory)
+//        }))
+//        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil ))
+//
+//        present(sheet, animated: true)
     }
     
     
@@ -134,7 +134,7 @@ class FeedCollectionViewController: UICollectionViewController {
 
     func getAllCategories() {
         do {
-            categories = try context.fetch(Category.fetchRequest())
+           // categories = try context.fetch(Category.fetchRequest())
             self.collectionView.reloadData()
         }
         catch{
@@ -148,7 +148,7 @@ class FeedCollectionViewController: UICollectionViewController {
     
     func deleteNote(category: Category){
         
-        context.delete(category)
+        //context.delete(category)
         
         do {
             try context.save()

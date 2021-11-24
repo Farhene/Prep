@@ -9,14 +9,37 @@
 
 import UIKit
 
+
+
 class CalendarViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var calendarView: UIView!
+    //@IBOutlet weak var calendar: FSCalendar!
+    let defaults = UserDefaults.standard
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateTheme()
     }
     
+    func updateTheme(){
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
+
+        if (mode == "light") {
+            // Apply your light theme
+            print("light view")
+            view.backgroundColor = UIColor.lightestTeal
+            calendarView.backgroundColor = UIColor.lightTeal
+            
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            print("dark view")
+            view.backgroundColor = UIColor.darkestTeal
+            calendarView.backgroundColor = UIColor.darkTeal
+        }
+    }
 
     
     // MARK: - Navigation

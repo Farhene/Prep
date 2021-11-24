@@ -15,8 +15,6 @@
 		E002FA282727780B001C7337 /* Prep.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E002FA262727780B001C7337 /* Prep.xcdatamodeld */; };
 		E002FA2A27277813001C7337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E002FA2927277813001C7337 /* Assets.xcassets */; };
 		E002FA2D27277813001C7337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E002FA2B27277813001C7337 /* LaunchScreen.storyboard */; };
-		E002FA3827277814001C7337 /* PrepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA3727277814001C7337 /* PrepTests.swift */; };
-		E002FA4327277814001C7337 /* PrepUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA4227277814001C7337 /* PrepUITests.swift */; };
 		E002FA5327330511001C7337 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5227330511001C7337 /* FeedCollectionViewCell.swift */; };
 		E002FA5527330525001C7337 /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5427330525001C7337 /* FeedCollectionViewController.swift */; };
 		E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002FA5827331228001C7337 /* RandomActivityViewController.swift */; };
@@ -67,11 +65,7 @@
 		E002FA2C27277813001C7337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E002FA2E27277813001C7337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E002FA3327277814001C7337 /* PrepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrepTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E002FA3727277814001C7337 /* PrepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepTests.swift; sourceTree = "<group>"; };
-		E002FA3927277814001C7337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E002FA3E27277814001C7337 /* PrepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E002FA4227277814001C7337 /* PrepUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepUITests.swift; sourceTree = "<group>"; };
-		E002FA4427277814001C7337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E002FA5227330511001C7337 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		E002FA5427330525001C7337 /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		E002FA5827331228001C7337 /* RandomActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomActivityViewController.swift; sourceTree = "<group>"; };
@@ -129,8 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				E002FA1C2727780B001C7337 /* Prep */,
-				E002FA3627277814001C7337 /* PrepTests */,
-				E002FA4127277814001C7337 /* PrepUITests */,
 				E002FA1B2727780B001C7337 /* Products */,
 				F5D0451FF37F576F5718A345 /* Pods */,
 				2C08DF242587543660CCF43D /* Frameworks */,
@@ -150,6 +142,7 @@
 		E002FA1C2727780B001C7337 /* Prep */ = {
 			isa = PBXGroup;
 			children = (
+				E06F9835274DCF8D008BBACC /* New Group */,
 				E0FB3CB4274DA3D500A4C7A5 /* Delegates */,
 				E002FA212727780B001C7337 /* ViewController.swift */,
 				E002FA232727780B001C7337 /* Main.storyboard */,
@@ -165,22 +158,11 @@
 			path = Prep;
 			sourceTree = "<group>";
 		};
-		E002FA3627277814001C7337 /* PrepTests */ = {
+		E06F9835274DCF8D008BBACC /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				E002FA3727277814001C7337 /* PrepTests.swift */,
-				E002FA3927277814001C7337 /* Info.plist */,
 			);
-			path = PrepTests;
-			sourceTree = "<group>";
-		};
-		E002FA4127277814001C7337 /* PrepUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E002FA4227277814001C7337 /* PrepUITests.swift */,
-				E002FA4427277814001C7337 /* Info.plist */,
-			);
-			path = PrepUITests;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E0FB3CB0274D9AD800A4C7A5 /* Extensions */ = {
@@ -504,7 +486,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E002FA3827277814001C7337 /* PrepTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +493,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E002FA4327277814001C7337 /* PrepUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

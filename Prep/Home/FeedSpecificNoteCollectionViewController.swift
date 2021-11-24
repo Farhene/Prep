@@ -5,25 +5,32 @@
 //  Created by Farhene Sultana on 11/22/21.
 //
 
-
-// -------------- I DID NOT IMPLEMENT THIS YET
-
 import UIKit
 
 private let reuseIdentifier = "Cell"
 
 class FeedSpecificNoteCollectionViewController: UICollectionViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let defaults = UserDefaults.standard
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateTheme()
+    }
+    
+    func updateTheme(){
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        if (mode == "light") {
+            // Apply your light theme
+            print("light view")
+            collectionView.backgroundColor = UIColor.lightestTeal
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            print("dark view")
+            collectionView.backgroundColor = UIColor.darkestTeal
+        }
     }
 
     /*

@@ -16,13 +16,18 @@ class UndatedNotesTableViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let defaults = UserDefaults.standard
+    
     //---------------------------------             HELP!!!!!!!!!!!
 
-    private var notes = [Note]()
-    private var allNotes = [Note]()
+//    private var notes = [Note]()
+//    private var allNotes = [Note]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateTheme()
+
 
         title = "Undated Prep Notes"
         getAllUndatedNotes()
@@ -30,6 +35,21 @@ class UndatedNotesTableViewController: UITableViewController {
         tableView.dataSource = self
             
         print(input)
+    }
+    
+    func updateTheme(){
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
+
+        if (mode == "light") {
+            // Apply your light theme
+            print("light view")
+            tableView.backgroundColor = UIColor.lightestTeal
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            print("dark view")
+            tableView.backgroundColor = UIColor.darkestTeal
+        }
     }
     
     // MARK: - Table view data source
@@ -41,7 +61,8 @@ class UndatedNotesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes.count
+       // return notes.count
+        return 0
     }
 
     
@@ -51,7 +72,7 @@ class UndatedNotesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let note = notes[indexPath.row]
+        //let note = notes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UndatedNotesCell", for: indexPath) as! UndatedNotesTableViewCell
     
 
@@ -65,9 +86,9 @@ class UndatedNotesTableViewController: UITableViewController {
             cell.bodyNotes?.textColor = UIColor.darkTeal
         }
         
-        cell.bodyNotes?.text = note.body
-
-        print("notes: ", note.body)
+//        cell.bodyNotes?.text = note.body
+//
+//        print("notes: ", note.body)
 
         return cell
     }
@@ -75,17 +96,17 @@ class UndatedNotesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let targetNote = notes[indexPath.row]
+        //let targetNote = notes[indexPath.row]
         
-        let sheet = UIAlertController(title: "Complete?",
-                                      message: "Delete or Keep: ' \(targetNote.body)' ?",
-                                      preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            self?.deleteNote(note: targetNote)
-        }))
-        sheet.addAction(UIAlertAction(title: "Keep", style: .default, handler: nil ))
-        
-        present(sheet, animated: true)
+//        let sheet = UIAlertController(title: "Complete?",
+//                                      message: "Delete or Keep: ' \(targetNote.body)' ?",
+//                                      preferredStyle: .actionSheet)
+//        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+//            self?.deleteNote(note: targetNote)
+//        }))
+//        sheet.addAction(UIAlertAction(title: "Keep", style: .default, handler: nil ))
+//
+//        present(sheet, animated: true)
     }
     
     
@@ -100,14 +121,14 @@ class UndatedNotesTableViewController: UITableViewController {
         
         let date =  Calendar.current.date(from: components)
         do {
-            allNotes = try context.fetch(Note.fetchRequest())
+//            allNotes = try context.fetch(Note.fetchRequest())
             
             // filter out dated notes
-            for i in allNotes {
-                if(i.startDate == date){
-                    notes.append(i)
-                }
-            }
+//            for i in allNotes {
+//                if(i.startDate == date){
+//                    notes.append(i)
+//                }
+//            }
             self.tableView.reloadData()
         }
         catch {
@@ -117,15 +138,15 @@ class UndatedNotesTableViewController: UITableViewController {
     
    
     //---------------------------------             HELP!!!!!!!!!!!
-    func deleteNote(note: Note){
-        context.delete(note)
-
-        do {
-            try context.save()
-            self.tableView.reloadData()
-        }
-        catch {
-            print("deleted!")
-        }
-    }
+//    func deleteNote(note: Note){
+//        context.delete(note)
+//
+//        do {
+//            try context.save()
+//            self.tableView.reloadData()
+//        }
+//        catch {
+//            print("deleted!")
+//        }
+//    }
 }

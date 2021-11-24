@@ -21,6 +21,7 @@ extension UIColor {
     static let lightPink = UIColor(hexCode: 0xFFCCFF)
     static let dullPink = UIColor(hexCode: 0xCC6699)
     static let bloodRed = UIColor(hexCode: 0x800000)
+    static let darkRed = UIColor(hexCode: 0xa3331d)
     
     static let lightOrange = UIColor(hexCode: 0xFFCC66)
     static let coral = UIColor(hexCode: 0xFF5050)
@@ -33,6 +34,9 @@ extension UIColor {
 
     static let uglyGreen = UIColor(hexCode: 0x99CC00)
     static let deepGreen = UIColor(hexCode: 0x009933)
+    static let dullMint = UIColor(hexCode: 0x9FD7AA)
+    
+    static let clear = UIColor(hexCode: 0xFFFFFF, alpha: 0)
     
     convenience init(red : Int, green : Int, blue : Int, alpha: CGFloat = 1.0) {
         self.init(

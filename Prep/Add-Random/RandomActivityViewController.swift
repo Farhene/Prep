@@ -16,6 +16,7 @@ class RandomActivityViewController: UIViewController {
     var activity = String() //() indicates it is a creation of something
     @IBOutlet weak var randomActivityLabel: UILabel!
     @IBOutlet weak var addToCalendarQuestionLabel: UILabel!
+    @IBOutlet weak var activityTitle: UILabel!
     @IBOutlet weak var yesButton: UIButton!{
         didSet{
             yesButton.layer.cornerRadius = 0.5
@@ -116,10 +117,51 @@ class RandomActivityViewController: UIViewController {
                                })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let defaults = UserDefaults.standard
 
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateTheme()
+    }
+    
+    func updateTheme(){
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
+
+        if (mode == "light") {
+            // Apply your light theme
+            print("light view")
+            view.backgroundColor = UIColor.lightestTeal
+            randomButton.backgroundColor = UIColor.lightOrange
+            
+            randomActivityLabel.textColor = UIColor.deepGreen
+            randomActivityLabel.backgroundColor = UIColor.lightestTeal
+            
+            activityTitle.textColor = UIColor.waluigi
+            activityTitle.backgroundColor = UIColor.lightestTeal
+            
+            yesButton.backgroundColor = UIColor.darkTeal
+            yesButton.setTitleColor(UIColor.white, for: .normal)
+
+            addToCalendarQuestionLabel.textColor = UIColor.waluigi
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            print("dark view")
+            view.backgroundColor = UIColor.darkestTeal
+            randomButton.backgroundColor = UIColor.dullPink
+            
+            randomActivityLabel.textColor = UIColor.lightestTeal
+            randomActivityLabel.backgroundColor = UIColor.darkestTeal
+
+            activityTitle.textColor = UIColor.lightOrange
+            activityTitle.backgroundColor = UIColor.darkestTeal
+
+            
+            yesButton.backgroundColor = UIColor.lightTeal
+            yesButton.setTitleColor(UIColor.darkestTeal, for: .normal)
+            
+            addToCalendarQuestionLabel.textColor = UIColor.lightOrange
+        }
     }
     
 
