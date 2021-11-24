@@ -2,12 +2,6 @@
 
 ###Concept
 
-###Demos 
--  Nov 15th
--  Nov 22nd
--  Nov 29th
-
-
 ###Goals
 - Feed
   - Category Feed Collection View
@@ -30,8 +24,19 @@
   - issues with Entity in AddNote tab! startDate is being a problem.
   
   ##Finished:
-  - Established Core Data "PrepNote" entity
+  - Core Data "Note" entity -> one Note to one Category through "notes" relationship for category
+  - Core Data "Category" entity -> One to many "Note" through category attribute through note relationship
+  - Random Generator View Controller
+  - Extension of Native Swift -> UIColor
+  - REST API Call done
+  - Animation 
+  - At least 3 different scenes with dynamic data
+  - Dark mode -> User Defaults
   
   ##ToDo:
-  - Work on issues
-  - Work on BoredAPI calls for the Random generator file
+  - Auto-Layout
+  - Fix Core Data Out of Scope entities issues
+  - Create own delegate protocol
+  - Dynamic table view in Undated
+  - Dynamic collection views in Feed and Feed Specific
+  - FSCalendar to have dated notes in the calendar's corresponding dates 
