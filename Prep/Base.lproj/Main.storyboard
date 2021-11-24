@@ -247,7 +247,7 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="categoryFeedCell" destination="LAB-9L-3Iq" id="s9p-SK-mu2"/>
-                                    <segue destination="se1-CK-irV" kind="show" id="d77-Xz-xoq"/>
+                                    <segue destination="se1-CK-irV" kind="show" identifier="goToSpecificNotes" id="8pI-kF-Bsd"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -272,8 +272,8 @@
         <!--Feed Specific Note Collection View Controller-->
         <scene sceneID="VoZ-9m-6cY">
             <objects>
-                <collectionViewController id="se1-CK-irV" customClass="FeedSpecificNoteCollectionViewController" customModule="Prep" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uvr-Q4-Spl">
+                <collectionViewController storyboardIdentifier="goToSpecificNotes" id="se1-CK-irV" customClass="FeedSpecificNoteCollectionViewController" customModule="Prep" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="goToSpecificNotes" dataMode="prototypes" id="Uvr-Q4-Spl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -329,13 +329,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is NOT DONE YET, either segmented control or slider?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rb-Wx-a1r">
-                                <rect key="frame" x="87" y="490" width="243" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-3t-DTh">
                                 <rect key="frame" x="87" y="289" width="240" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -346,27 +339,17 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="onDarkButton:" destination="Hmw-If-rTx" eventType="valueChanged" id="0n5-TD-RAs"/>
+                                    <action selector="onDarkButton:" destination="Hmw-If-rTx" eventType="valueChanged" id="Vmq-Sx-M10"/>
                                 </connections>
                             </segmentedControl>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="sun.min.fill" catalog="system" maximumValueImage="moon.fill" translatesAutoresizingMaskIntoConstraints="NO" id="Umc-jV-8Px">
-                                <rect key="frame" x="82" y="378" width="250" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.35298710170000003" green="0.76939731840000003" blue="0.64350850270000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="minimumTrackTintColor" red="0.35298710170000003" green="0.76939731840000003" blue="0.64350850270000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="onSlider:" destination="Hmw-If-rTx" eventType="valueChanged" id="yzg-YM-LJt"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rft-uP-Oon"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="6Cy-6m-H7w"/>
                     <connections>
-                        <outlet property="darkModeButton" destination="gzj-3t-DTh" id="DJe-Z3-Av0"/>
+                        <outlet property="darkModeButton" destination="gzj-3t-DTh" id="S8o-bS-GeM"/>
                         <outlet property="darkModeQuestionLabel" destination="gqC-D5-AVO" id="avJ-V2-JP7"/>
-                        <outlet property="darkModeSlider" destination="Umc-jV-8Px" id="DnE-Rj-tJW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOf-oO-W2W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -383,7 +366,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.81029209950000003" green="1" blue="0.92876401419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" red="0.064849492140000006" green="0.30763583709999998" blue="0.20014197580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="GDN-iU-a8f" kind="relationship" relationship="viewControllers" id="sC4-Ie-O7t"/>
@@ -694,7 +678,6 @@
         <image name="calendar.badge.clock.rtl" catalog="system" width="128" height="108"/>
         <image name="cube" catalog="system" width="128" height="124"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
-        <image name="moon.fill" catalog="system" width="128" height="121"/>
         <image name="moon.stars.fill" catalog="system" width="128" height="124"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>

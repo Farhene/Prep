@@ -5,6 +5,9 @@
 //  Created by Farhene Sultana on 11/3/21.
 //
 
+// -------------- This is FINISHED
+
+
 import UIKit
 
 
@@ -16,7 +19,7 @@ class RandomActivityViewController: UIViewController {
     @IBOutlet weak var yesButton: UIButton!{
         didSet{
             yesButton.layer.cornerRadius = 0.5
-            yesButton.backgroundColor = #colorLiteral(red: 0, green: 0.5091355443, blue: 0.3028217256, alpha: 1)
+            yesButton.backgroundColor = UIColor.darkestTeal
             yesButton.setTitleColor(.white, for: .normal)
             yesButton.setTitle("Yes", for: .normal)
             yesButton.layer.opacity = 0.0
@@ -25,7 +28,7 @@ class RandomActivityViewController: UIViewController {
     @IBOutlet weak var noButton: UIButton!{
         didSet{
             noButton.layer.cornerRadius = 0.5
-            noButton.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+            noButton.backgroundColor = UIColor.bloodRed
             noButton.setTitleColor(.white, for: .normal)
             noButton.setTitle("No", for: .normal)
             noButton.layer.opacity = 0.0
@@ -38,7 +41,7 @@ class RandomActivityViewController: UIViewController {
         didSet{
             //this line borrowed from stackOverflow to make button circular
             randomButton.layer.cornerRadius = 0.5 * randomButton.bounds.size.width
-            randomButton.backgroundColor = UIColor.orange
+            randomButton.backgroundColor = UIColor.coral
             
             randomButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
             randomButton.setTitle("?", for: .normal)

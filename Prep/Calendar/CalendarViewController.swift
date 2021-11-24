@@ -5,6 +5,8 @@
 //  Created by Farhene Sultana on 11/3/21.
 //
 
+// -------------- I DID NOT IMPLEMENT THIS YET
+
 import UIKit
 
 class CalendarViewController: UIViewController {
@@ -24,8 +26,8 @@ class CalendarViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "goToUndatedNotes" {
-            let settingsVC = segue.destination as! UndatedNotesTableViewController
-            settingsVC.input = "In undated now"
+            let undatedNotesVC = segue.destination as! UndatedNotesTableViewController
+            undatedNotesVC.input = "In undated now"
         }
     }
     

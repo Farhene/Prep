@@ -5,6 +5,9 @@
 //  Created by Farhene Sultana on 11/3/21.
 //
 
+
+// -------------- HELP!! CORE DATA PROBLEMS
+
 import UIKit
 import Foundation
 
@@ -17,17 +20,16 @@ class FeedCollectionViewController: UICollectionViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //global variable of all items to fetch from the entity from CoreData
-    private var notes = [PrepNote]()
-    //private var categories = [PrepCategory]()
+    private var categories = [Category]()
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        title = "Prep Notes"
-        getAllNotes()
+        updateTheme()
+            
+        title = "Prep Categories"
+        getAllCategories()
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -55,6 +57,20 @@ class FeedCollectionViewController: UICollectionViewController {
         }
     }
     
+    func updateTheme(){
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
+
+        if (mode == "light") {
+            // Apply your light theme
+            print("light view")
+            view.backgroundColor = UIColor.lightestTeal
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            print("dark view")
+            view.backgroundColor = UIColor.darkestTeal
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -65,15 +81,20 @@ class FeedCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return notes.count
+        return categories.count
     }
 
+    
+    
+    //---------------------------------             HELP!!!!!!!!!!!
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let note = notes[indexPath.row]
+        let category = categories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         
-        // Configure the cell
-        cell.categoryFeedCell?.text = note.category
+        //Professor, I am not sure why it does not recognize the category attribute her!!
+        cell.categoryFeedCell?.text = category.category
+
         
         cell.categoryFeedCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
        
@@ -87,24 +108,33 @@ class FeedCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let targetNote = notes[indexPath.row]
+        let targetCategory = categories[indexPath.row]
+        print("Note chosen: ", targetCategory.category)
         
-        let sheet = UIAlertController(title: "\(targetNote.category)",
+        
+        // I will change to make the sheet ONLY appear when user does LONG press gesture
+        // So you can ignore these lines 110-118
+        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
                                       message: "View or Delete?",
                                       preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            self?.deleteNote(note: targetNote)
+            self?.deleteNote(category: targetCategory)
         }))
-        sheet.addAction(UIAlertAction(title: "View", style: .default, handler: nil ))
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil ))
+        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil ))
         
         present(sheet, animated: true)
     }
     
-    //---------------------------- Manipulating PrepNotes here    
-    func getAllNotes() {
+    
+    
+    
+    //---------------------------- Manipulating Categories here
+    
+    //---------------------------------             HELP!!!!!!!!!!!
+
+    func getAllCategories() {
         do {
-            notes = try context.fetch(PrepNote.fetchRequest())
+            categories = try context.fetch(Category.fetchRequest())
             self.collectionView.reloadData()
         }
         catch{
@@ -113,9 +143,12 @@ class FeedCollectionViewController: UICollectionViewController {
         }
     }
     
-    func deleteNote(note: PrepNote){
+    //---------------------------------             HELP!!!!!!!!!!!
+
+    
+    func deleteNote(category: Category){
         
-        context.delete(note)
+        context.delete(category)
         
         do {
             try context.save()
@@ -126,17 +159,21 @@ class FeedCollectionViewController: UICollectionViewController {
         }
     }
 
+    
+    
+    //Professor you can ignore this segue function - will figure out after Core Data issue is resolved.
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
         //Task 1 - find selected note
         let cell = sender as! UICollectionViewCell
         let indexPath = collectionView.indexPath(for: cell)!
-        //let note = notes[indexPath.row]
-                
-                        // Task 2 - store to next VC
-        //let deetailNotesListVC = segue.destination as! PrepNotesFromCategory
+        let category = categories[indexPath.row]
+        
+//        if(identifier == "goToSpecificNotes"){
+//            let detailNotesListVC = segue.destination as! FeedSpecificNoteCollectionViewController
+//            detailNotesListVC.notes = category.notes
+//        }
         
                         //through category I should be able to grab ALL notes related to that categroy through relationship
-        //deetailNotesListVC.category = note.category
                 
                         //while transitioning, this disables the highlighted feature of each cell that was selected
         collectionView.deselectItem(at: indexPath, animated: true)

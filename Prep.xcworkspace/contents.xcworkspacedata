@@ -2,10 +2,16 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Prep/PrepCategoryFolder/PrepCategory+CoreDataClass.swift">
+      location = "group:Note+CoreDataProperties.swift">
    </FileRef>
    <FileRef
-      location = "group:Prep/PrepCategoryFolder/PrepCategory+CoreDataProperties.swift">
+      location = "group:Category+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Category+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Note+CoreDataClass.swift">
    </FileRef>
    <FileRef
       location = "group:Prep.xcodeproj">

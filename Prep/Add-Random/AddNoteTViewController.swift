@@ -5,6 +5,9 @@
 //  Created by Farhene Sultana on 11/15/21.
 //
 
+// -------------- HELP!! CORE DATA PROBLEMS 
+
+
 import UIKit
 
 class AddNoteTViewController: UITableViewController {
@@ -67,15 +70,17 @@ class AddNoteTViewController: UITableViewController {
     }
     
     //function uses Core Data
+    //---------------------------------             HELP!!!!!!!!!!!
+    // it doesn't recognize Note here as well ;(
     func createNoteNoDate(category: String, body: String){
-        let newItem = PrepNote(context: context)
+        let newItem = Note(context: context)
         newItem.body = body
-        newItem.category = category
+        newItem.category?.category = category
 
         do {
             try context.save()
             do {
-                try context.fetch(PrepNote.fetchRequest())
+                try context.fetch(Note.fetchRequest())
             }
             catch{
                 //error
@@ -113,17 +118,21 @@ class AddNoteTViewController: UITableViewController {
     }
 
     //function uses Core Data
+    //---------------------------------             HELP!!!!!!!!!!!
+    // again it does not recognize note!
     func createNotewithDate(category: String, body: String, startDate: Date, endDate: Date){
-        let newItem = PrepNote(context: context)
+        let newItem = Note(context: context)
         newItem.body = body
-        newItem.category = category
         newItem.startDate = startDate
         newItem.endDate = endDate
-
+        
+        // Professor, here I tried to access the category attribute of the Category entity through Note's category relationship to the cateogory in Category data model.
+        newItem.category?.category = category
+        
         do {
             try context.save()
             do {
-                try context.fetch(PrepNote.fetchRequest())
+                try context.fetch(Note.fetchRequest())
             }
             catch{
                 //error
@@ -135,13 +144,5 @@ class AddNoteTViewController: UITableViewController {
         }
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
 }

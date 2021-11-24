@@ -5,6 +5,9 @@
 //  Created by Farhene Sultana on 11/16/21.
 //
 
+// -------------- HELP!! CORE DATA PROBLEMS
+
+
 import UIKit
 
 class UndatedNotesTableViewController: UITableViewController {
@@ -12,25 +15,20 @@ class UndatedNotesTableViewController: UITableViewController {
     var input = String()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //---------------------------------             HELP!!!!!!!!!!!
 
-    private var notes = [PrepNote]()
-    private var allNotes = [PrepNote]()
+    private var notes = [Note]()
+    private var allNotes = [Note]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         title = "Undated Prep Notes"
         getAllUndatedNotes()
-        print(notes)
         tableView.delegate = self
         tableView.dataSource = self
-                    
-        
+            
         print(input)
     }
     
@@ -47,6 +45,10 @@ class UndatedNotesTableViewController: UITableViewController {
     }
 
     
+    
+    //---------------------------------             HELP!!!!!!!!!!!
+    // because it does not recognize notes in scope, I am unable to access the body attribute from notes class here!
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let note = notes[indexPath.row]
@@ -54,17 +56,22 @@ class UndatedNotesTableViewController: UITableViewController {
     
 
         // Configure the cell...
+        //Using Extension of UIcolor here!
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = #colorLiteral(red: 0, green: 0.6111619473, blue: 0.5249490142, alpha: 1)
-            cell.bodyNotes?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.backgroundColor = UIColor.darkTeal
+            cell.bodyNotes?.textColor = UIColor.lightTeal
         } else {
-            cell.backgroundColor = #colorLiteral(red: 0.5912877917, green: 1, blue: 0.9412642121, alpha: 1)
-            cell.bodyNotes?.textColor = #colorLiteral(red: 0, green: 0.3143163919, blue: 0.3069375157, alpha: 1)
+            cell.backgroundColor = UIColor.lightTeal
+            cell.bodyNotes?.textColor = UIColor.darkTeal
         }
+        
         cell.bodyNotes?.text = note.body
+
+        print("notes: ", note.body)
 
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -82,7 +89,8 @@ class UndatedNotesTableViewController: UITableViewController {
     }
     
     
-    
+    //---------------------------------             HELP!!!!!!!!!!!
+    // unable to get the .startDate of the object's attribute because it says Note model out of scope
     func getAllUndatedNotes(){
         var components = DateComponents()
         components.month = 1
@@ -92,7 +100,8 @@ class UndatedNotesTableViewController: UITableViewController {
         
         let date =  Calendar.current.date(from: components)
         do {
-            allNotes = try context.fetch(PrepNote.fetchRequest())
+            allNotes = try context.fetch(Note.fetchRequest())
+            
             // filter out dated notes
             for i in allNotes {
                 if(i.startDate == date){
@@ -105,11 +114,12 @@ class UndatedNotesTableViewController: UITableViewController {
             print("couldn't load the notes from category")
         }
     }
-   
     
-    func deleteNote(note: PrepNote){
+   
+    //---------------------------------             HELP!!!!!!!!!!!
+    func deleteNote(note: Note){
         context.delete(note)
-        
+
         do {
             try context.save()
             self.tableView.reloadData()
