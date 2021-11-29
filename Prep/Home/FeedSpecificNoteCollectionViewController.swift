@@ -59,7 +59,6 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -76,6 +75,7 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         //should be the notes from that same category
         cell.noteFromCategoryCell?.text = note.body
         
+        cell.noteFromCategoryCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
         
         return cell
     }

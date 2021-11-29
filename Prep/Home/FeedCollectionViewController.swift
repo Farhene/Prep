@@ -20,6 +20,13 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
     private var categories = [Categ]()
     
     let defaults = UserDefaults.standard
+    
+    struct PrepNoteCell {
+        var index = Int()
+        var path = IndexPath()
+    }
+    
+    var selectedCategory = PrepNoteCell()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,21 +53,17 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
         if segue.identifier == "goToSettings" {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.input = "In settings now"
         }
         
-        //FIX THIS THEN IT COULD WORK
         else if segue.identifier == "goToSpecificNotes" {
-            let cell = sender as! UICollectionViewCell
-            let indexPath = collectionView.indexPath(for: cell)!
-            let category = categories[indexPath.row]
+            let categoryString = categories[selectedCategory.index].category
             
             let detailsVC = segue.destination as? FeedSpecificNoteCollectionViewController
-            detailsVC?.targetCategory = category.category ?? "nil"
+            detailsVC?.targetCategory = categoryString ?? "nil"
         }
     }
     
@@ -80,12 +83,10 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return categories.count
     }
 
@@ -113,15 +114,13 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
         print("Note chosen: ", (targetCategory.category ?? "no value") as String)
         
         //segue here
-        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
+        let sheet = UIAlertController(title: "\(targetCategory.category ?? "nil")",
                                       message: "View or Delete?",
                                       preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
                 self?.deleteNote(category: targetCategory)
             }))
-        sheet.addAction(UIAlertAction(title: "Ignore", style: .default, handler: { (action) -> Void in
-            self.performSegue(withIdentifier: "goToSpecificNotes", sender: indexPath)
-            }))
+        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
         
         present(sheet, animated: true)
     }
