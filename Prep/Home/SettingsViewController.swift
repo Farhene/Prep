@@ -7,6 +7,16 @@
 
 import UIKit
 
+//NSNotification center, notifies everybody that something changed.
+//if user clicked on changing theme color, then notify that the color has changed, and whoeevr listening on the key can change the color and whatever it needs to do.
+//delegating is one to one relationship
+
+// it abstracts responsibilities
+// you create custom component, and you want to separate the business logic (logic specific to your app) from your component
+// Calendar component had custom logic which makes app set an appointment but we don't want that
+// I want calendar component to do something else
+// Delegates help us to let us know when we interact with the component, and so if we click on the date, it will call on the delegate saying we called on the date, and we will handle the specifics of their app.
+
 class SettingsViewController: UIViewController {
     
     var input = String()

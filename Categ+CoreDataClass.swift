@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Category)
+@objc(Categ)
 public class Categ: NSManagedObject {
 
 }

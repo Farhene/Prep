@@ -7,12 +7,17 @@
 
 import UIKit
 
-private let reuseIdentifier = "FeedSpecificNoteCollectionViewCell"
 
 class FeedSpecificNoteCollectionViewController: UICollectionViewController {
 
+    //helps to deal with objects in the CoreData database
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     let defaults = UserDefaults.standard
-    private var notesList = [Categ]()
+    private var categoryList = [Categ]()
+    private var notesList = [Note]()
+    
+    var targetCategory = String()
 
 
     override func viewDidAppear(_ animated: Bool) {
@@ -20,7 +25,8 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         updateTheme()
         
         title = "Prep Notes From Sample"
-        //getAllNotes()
+        print(targetCategory)
+        getNotesFromCategory(targetCateg: targetCategory)
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -32,6 +38,8 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
                     
         let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
         layout.itemSize = CGSize(width: width, height: width*1)
+        
+        
     }
     
     func updateTheme(){
@@ -39,12 +47,10 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
 
         if (mode == "light") {
             // Apply your light theme
-            print("light view")
             collectionView.backgroundColor = UIColor.lightestTeal
         }
         else if(mode == "dark"){
             // Apply your dark theme.
-            print("dark view")
             collectionView.backgroundColor = UIColor.darkestTeal
         }
     }
@@ -58,17 +64,36 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return notesList.notes.count
-        return 0
+        return notesList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedSpecificNoteCollectionViewCell", for: indexPath) as! FeedSpecificNoteCollectionViewCell
     
         let note = notesList[indexPath.row]
         
-        //cell.noteFromCategoryCell?.text = notesList.body
+        //should be the notes from that same category
+        cell.noteFromCategoryCell?.text = note.body
+        
         
         return cell
+    }
+        
+    func getNotesFromCategory(targetCateg: String){
+        do {
+            categoryList = try context.fetch(Categ.fetchRequest())
+            for i in categoryList {
+                if(i.category == targetCategory){
+                    //I need to get the notes from here!
+                    //notesList = i.notes
+                    break;
+                }
+            }
+            print("Notes count from here: ", notesList.count)
+            print("Notes are: ", notesList)
+        }
+        catch{
+            print("Error!")
+        }
     }
 }

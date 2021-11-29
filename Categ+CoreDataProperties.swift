@@ -22,7 +22,7 @@ extension Categ {
 }
 
 // MARK: Generated accessors for notes
-extension Category {
+extension Categ {
 
     @objc(addNotesObject:)
     @NSManaged public func addToNotes(_ value: Note)

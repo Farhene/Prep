@@ -5,9 +5,6 @@
 //  Created by Farhene Sultana on 11/15/21.
 //
 
-// -------------- HELP!! CORE DATA PROBLEMS 
-
-
 import UIKit
 
 class AddNoteTViewController: UITableViewController {
@@ -17,6 +14,7 @@ class AddNoteTViewController: UITableViewController {
     
     var category = String()
     var notes = String()
+    private var categList = [Categ]()
     
     @IBOutlet weak var addNoteTitle: UILabel!
     @IBOutlet weak var categTitle: UILabel!
@@ -141,12 +139,27 @@ class AddNoteTViewController: UITableViewController {
     }
     
     //function uses Core Data
-    //---------------------------------             HELP!!!!!!!!!!!
-    // it doesn't recognize Note here as well ;(
+
     func createNoteNoDate(category: String, body: String){
+        
+        //Create Note
         let newItem = Note(context: context)
         newItem.body = body
-        newItem.category?.category = category
+        newItem.id = UUID()
+        
+        //Check if category exists, if it does, it will insert newItem and return true
+        let categExists = checkIFCategoryExists(category: category, note: newItem)
+        
+        if(categExists == false){
+            //Create Category
+            let newCateg = Categ(context: context)
+            newCateg.category = category
+            
+            //add Note to Category
+            newCateg.addToNotes(newItem)
+        }
+
+        print("no date item: ",newItem)
 
         do {
             try context.save()
@@ -154,12 +167,11 @@ class AddNoteTViewController: UITableViewController {
                 try context.fetch(Note.fetchRequest())
             }
             catch{
-                //error
-                print("Error!")
+                print("Inner Error!")
             }
         }
         catch{
-            print("Error: ")
+            print("Outer Error: ", error)
         }
     }
 
@@ -189,28 +201,57 @@ class AddNoteTViewController: UITableViewController {
     }
 
     //function uses Core Data
-    //---------------------------------             HELP!!!!!!!!!!!
-    // again it does not recognize note!
+
     func createNotewithDate(category: String, body: String, startDate: Date, endDate: Date){
+        
+        //Create Note
         let newItem = Note(context: context)
         newItem.body = body
         newItem.startDate = startDate
         newItem.endDate = endDate
-
-        newItem.category?.category = category
-
+        newItem.id = UUID()
+        
+        //Check if category exists, if it does, it will insert newItem and return true
+        let categExists = checkIFCategoryExists(category: category, note: newItem)
+        
+        if(categExists == false){
+            //Create Category
+            let newCateg = Categ(context: context)
+            newCateg.category = category
+            
+            //add Note to Category
+            newCateg.addToNotes(newItem)
+        }
+        
+        print("date item: ", newItem)
+        //try! context.save()
         do {
             try context.save()
             do {
                 try context.fetch(Note.fetchRequest())
             }
             catch{
-                //error
-                print("Error!")
+                print("Inner Error!")
             }
         }
         catch{
-            print("Error: ")
+            print("Outer Error: ")
         }
+    }
+    
+    func checkIFCategoryExists(category: String, note: Note) -> Bool {
+        do {
+            categList = try context.fetch(Categ.fetchRequest())
+            for i in categList {
+                if i.category == category {
+                    i.addToNotes(note) //add relationship here!
+                    return true
+                }
+            }
+        }
+        catch{
+            print("Error!")
+        }
+        return false
     }
 }

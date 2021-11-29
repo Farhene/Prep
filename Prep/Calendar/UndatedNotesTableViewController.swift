@@ -32,20 +32,18 @@ class UndatedNotesTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
             
-        print(input)
+        print("From Calender to ", input)
     }
     
     func updateTheme(){
         let mode = (defaults.string(forKey: "theme") ?? "no color") as String
 
         if (mode == "light") {
-            // Apply your light theme
-            print("light view")
+            // Apply light theme
             tableView.backgroundColor = UIColor.lightestTeal
         }
         else if(mode == "dark"){
-            // Apply your dark theme.
-            print("dark view")
+            // Apply dark theme.
             tableView.backgroundColor = UIColor.darkestTeal
         }
     }
@@ -59,11 +57,8 @@ class UndatedNotesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-       // return notes.count
-        return 0
+        return notes.count
     }
-
-    
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +66,6 @@ class UndatedNotesTableViewController: UITableViewController {
         let note = notes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UndatedNotesCell", for: indexPath) as! UndatedNotesTableViewCell
     
-
         // Configure the cell...
         //Using Extension of UIcolor here!
         if indexPath.row % 2 == 0 {
@@ -83,9 +77,6 @@ class UndatedNotesTableViewController: UITableViewController {
         }
         
         cell.bodyNotes?.text = note.body
-
-        print("notes: ", note.body)
-
         return cell
     }
     
@@ -105,9 +96,6 @@ class UndatedNotesTableViewController: UITableViewController {
         present(sheet, animated: true)
     }
     
-    
-    //---------------------------------             HELP!!!!!!!!!!!
-    // unable to get the .startDate of the object's attribute because it says Note model out of scope
     func getAllUndatedNotes(){
         var components = DateComponents()
         components.month = 1
@@ -118,7 +106,7 @@ class UndatedNotesTableViewController: UITableViewController {
         let date =  Calendar.current.date(from: components)
         do {
             allNotes = try context.fetch(Note.fetchRequest())
-            
+            print("Total notes: ", allNotes)
             // filter out dated notes
             for i in allNotes {
                 if(i.startDate == date){

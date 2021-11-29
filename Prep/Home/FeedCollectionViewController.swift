@@ -11,7 +11,7 @@ import Foundation
 
 private let reuseIdentifier = "FeedCollectionViewCell"
 
-class FeedCollectionViewController: UICollectionViewController {
+class FeedCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
     //helps to deal with objects in the CoreData database
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -52,6 +52,15 @@ class FeedCollectionViewController: UICollectionViewController {
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.input = "In settings now"
         }
+        
+        else if segue.identifier == "goToSpecificNotes" {
+            let cell = sender as! UICollectionViewCell
+            let indexPath = collectionView.indexPath(for: cell)!
+            let category = categories[indexPath.row]
+            
+            let detailsVC = segue.destination as? FeedSpecificNoteCollectionViewController
+            detailsVC?.targetCategory = category.category ?? "nil"
+        }
     }
     
     func updateTheme(){
@@ -59,12 +68,10 @@ class FeedCollectionViewController: UICollectionViewController {
 
         if (mode == "light") {
             // Apply your light theme
-            print("light view")
             collectionView.backgroundColor = UIColor.lightestTeal
         }
         else if(mode == "dark"){
             // Apply your dark theme.
-            print("dark view")
             collectionView.backgroundColor = UIColor.darkestTeal
         }
     }
@@ -81,9 +88,6 @@ class FeedCollectionViewController: UICollectionViewController {
         return categories.count
     }
 
-    
-    
-    //---------------------------------             HELP!!!!!!!!!!!
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let category = categories[indexPath.row]
@@ -105,30 +109,28 @@ class FeedCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let targetCategory = categories[indexPath.row]
-        print("Note chosen: ", targetCategory.category)
+        print("Note chosen: ", (targetCategory.category ?? "no value") as String)
         
+        //segue here
+        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
+                                      message: "View or Delete?",
+                                      preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+                self?.deleteNote(category: targetCategory)
+            }))
+        sheet.addAction(UIAlertAction(title: "Ignore", style: .default, handler: { (action) -> Void in
+            self.performSegue(withIdentifier: "goToSpecificNotes", sender: self)
+            }))
         
-        // I will change to make the sheet ONLY appear when user does LONG press gesture
-//        let sheet = UIAlertController(title: "Test \(targetCategory.category)",
-//                                      message: "View or Delete?",
-//                                      preferredStyle: .actionSheet)
-//        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-//            self?.deleteNote(category: targetCategory)
-//        }))
-//        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil ))
-//
-//        present(sheet, animated: true)
+        present(sheet, animated: true)
     }
     
-    
-    
-    
     //---------------------------- Manipulating Categories here
-    
-
+        
     func getAllCategories() {
         do {
             categories = try context.fetch(Categ.fetchRequest())
+            print("categories: ", categories)
             self.collectionView.reloadData()
         }
         catch{
@@ -137,8 +139,6 @@ class FeedCollectionViewController: UICollectionViewController {
         }
     }
     
-    //---------------------------------             HELP!!!!!!!!!!!
-
     
     func deleteNote(category: Categ){
         
@@ -152,72 +152,5 @@ class FeedCollectionViewController: UICollectionViewController {
             print("deleted!")
         }
     }
-
-    
-    
-    //Professor you can ignore this segue function - will figure out after Core Data issue is resolved.
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        //Task 1 - find selected note
-        let cell = sender as! UICollectionViewCell
-        let indexPath = collectionView.indexPath(for: cell)!
-        let category = categories[indexPath.row]
-        
-//        if(identifier == "goToSpecificNotes"){
-//            let detailNotesListVC = segue.destination as! FeedSpecificNoteCollectionViewController
-//            detailNotesListVC.notes = category.notes
-//        }
-        
-                        //through category I should be able to grab ALL notes related to that categroy through relationship
-                
-                        //while transitioning, this disables the highlighted feature of each cell that was selected
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }
