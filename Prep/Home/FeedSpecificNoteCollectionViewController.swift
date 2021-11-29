@@ -16,6 +16,7 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
     let defaults = UserDefaults.standard
     private var categoryList = [Categ]()
     private var notesList = [Note]()
+    var noteNSSet = NSSet()
     
     var targetCategory = String()
 
@@ -85,10 +86,14 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
             for i in categoryList {
                 if(i.category == targetCategory){
                     //I need to get the notes from here!
-                    //notesList = i.notes
+                    noteNSSet = i.notes!
                     break;
                 }
             }
+            
+            //convert NSSet to Array
+            notesList = noteNSSet.toArray()
+            
             print("Notes count from here: ", notesList.count)
             print("Notes are: ", notesList)
         }

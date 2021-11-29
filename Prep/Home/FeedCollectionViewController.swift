@@ -53,6 +53,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
             settingsVC.input = "In settings now"
         }
         
+        //FIX THIS THEN IT COULD WORK
         else if segue.identifier == "goToSpecificNotes" {
             let cell = sender as! UICollectionViewCell
             let indexPath = collectionView.indexPath(for: cell)!
@@ -119,7 +120,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
                 self?.deleteNote(category: targetCategory)
             }))
         sheet.addAction(UIAlertAction(title: "Ignore", style: .default, handler: { (action) -> Void in
-            self.performSegue(withIdentifier: "goToSpecificNotes", sender: self)
+            self.performSegue(withIdentifier: "goToSpecificNotes", sender: indexPath)
             }))
         
         present(sheet, animated: true)
