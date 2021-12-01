@@ -26,7 +26,7 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         updateTheme()
         
         title = "Prep Notes From Sample"
-        print(targetCategory)
+        print("Target category chosen is: ", targetCategory)
         getNotesFromCategory(targetCateg: targetCategory)
 
         collectionView.delegate = self
@@ -72,12 +72,26 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
     
         let note = notesList[indexPath.row]
         
-        //should be the notes from that same category
         cell.noteFromCategoryCell?.text = note.body
         
         cell.noteFromCategoryCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let targetNote = notesList[indexPath.row]
+        
+        let sheet = UIAlertController(title: "\(targetNote.body ?? "nil")",
+                                      message: "Delete this note?",
+                                      preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        sheet.addAction(UIAlertAction(title: "Delete Note", style: .destructive, handler: { [weak self] _ in
+                self?.deleteNote(note: targetNote)
+            }))
+        
+        present(sheet, animated: true)
     }
         
     func getNotesFromCategory(targetCateg: String){
@@ -93,12 +107,23 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
             
             //convert NSSet to Array
             notesList = noteNSSet.toArray()
-            
-            print("Notes count from here: ", notesList.count)
-            print("Notes are: ", notesList)
+            self.collectionView.reloadData()
         }
         catch{
             print("Error!")
+        }
+    }
+    
+    func deleteNote(note: Note){
+        
+        context.delete(note)
+        
+        do {
+            try context.save()
+            self.collectionView.reloadData()
+        }
+        catch {
+            print("deleted!")
         }
     }
 }

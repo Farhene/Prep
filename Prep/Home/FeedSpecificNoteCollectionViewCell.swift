@@ -13,7 +13,3 @@ class FeedSpecificNoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var noteFromCategoryCell: UILabel!
     
 }
-
-
-//FeedSpecificNoteCollectionViewCell
-//noteFromCategoryCell

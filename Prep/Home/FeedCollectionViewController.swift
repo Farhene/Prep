@@ -15,19 +15,13 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
     
     //helps to deal with objects in the CoreData database
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+        
     //global variable of all items to fetch from the entity from CoreData
     private var categories = [Categ]()
+    var index = Int()
     
     let defaults = UserDefaults.standard
     
-    struct PrepNoteCell {
-        var index = Int()
-        var path = IndexPath()
-    }
-    
-    var selectedCategory = PrepNoteCell()
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateTheme()
@@ -45,26 +39,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
                     
         let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
         layout.itemSize = CGSize(width: width, height: width*1)
-    
-    }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "goToSettings" {
-            let settingsVC = segue.destination as! SettingsViewController
-            settingsVC.input = "In settings now"
-        }
-        
-        else if segue.identifier == "goToSpecificNotes" {
-            let categoryString = categories[selectedCategory.index].category
-            
-            let detailsVC = segue.destination as? FeedSpecificNoteCollectionViewController
-            detailsVC?.targetCategory = categoryString ?? "nil"
-        }
     }
     
     func updateTheme(){
@@ -78,6 +53,24 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
             // Apply your dark theme.
             collectionView.backgroundColor = UIColor.darkestTeal
         }
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToSettings" {
+            let settingsVC = segue.destination as! SettingsViewController
+            settingsVC.input = "In settings now"
+        }
+//        else if segue.identifier == "goToSpecificNotes" {
+//            let categoryString = self.categories[self.index].category
+//
+//            let detailsVC = segue.destination as? FeedSpecificNoteCollectionViewController
+//            detailsVC?.targetCategory = categoryString ?? ""
+//
+//        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -111,16 +104,19 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let targetCategory = categories[indexPath.row]
-        print("Note chosen: ", (targetCategory.category ?? "no value") as String)
         
-        //segue here
         let sheet = UIAlertController(title: "\(targetCategory.category ?? "nil")",
                                       message: "View or Delete?",
                                       preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+        sheet.addAction(UIAlertAction(title: "View Category", style: .default, handler: { (action) -> Void in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "goToSpecificNotes") as! FeedSpecificNoteCollectionViewController
+                vc.targetCategory = targetCategory.category ?? "nil"
+                self.present(vc, animated: true, completion: nil)
+            }))
+        sheet.addAction(UIAlertAction(title: "Delete Category", style: .destructive, handler: { [weak self] _ in
                 self?.deleteNote(category: targetCategory)
             }))
-        sheet.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
         
         present(sheet, animated: true)
     }
@@ -130,7 +126,6 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
     func getAllCategories() {
         do {
             categories = try context.fetch(Categ.fetchRequest())
-            print("categories: ", categories)
             self.collectionView.reloadData()
         }
         catch{
@@ -149,7 +144,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
             self.collectionView.reloadData()
         }
         catch {
-            print("deleted!")
+            print("error!")
         }
     }
 
