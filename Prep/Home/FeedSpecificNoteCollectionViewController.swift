@@ -74,6 +74,33 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         
         cell.noteFromCategoryCell?.text = note.body
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-YYYY"
+        let dateStart = formatter.string(from: note.startDate!)
+        
+        formatter.dateFormat = "MM-dd-YYYY"
+        let dateEnd = formatter.string(from: note.endDate!)
+        
+        if(dateStart != dateEnd) {
+            cell.date?.text = "\(dateStart) - \(dateEnd)"
+        }
+        else{
+            cell.date?.text = "\(dateEnd)"
+        }
+        
+        let mode = (defaults.string(forKey: "theme") ?? "no color") as String
+
+        if (mode == "light") {
+            // Apply your light theme
+            cell.date?.textColor = UIColor.darkestTeal
+        }
+        else if(mode == "dark"){
+            // Apply your dark theme.
+            cell.date?.textColor = UIColor.lightestTeal
+        }
+        
+        
+        
         cell.noteFromCategoryCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
         
         return cell

@@ -39,11 +39,9 @@ class UndatedNotesTableViewController: UITableViewController {
         let mode = (defaults.string(forKey: "theme") ?? "no color") as String
 
         if (mode == "light") {
-            // Apply light theme
             tableView.backgroundColor = UIColor.lightestTeal
         }
         else if(mode == "dark"){
-            // Apply dark theme.
             tableView.backgroundColor = UIColor.darkestTeal
         }
     }
@@ -51,12 +49,10 @@ class UndatedNotesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return notes.count
     }
 
@@ -86,7 +82,7 @@ class UndatedNotesTableViewController: UITableViewController {
         let targetNote = notes[indexPath.row]
         
         let sheet = UIAlertController(title: "Complete?",
-                                      message: "Delete or Keep: ' \(targetNote.body)' ?",
+                                      message: "Delete or Keep: ' \(targetNote.body ?? "nil")' ?",
                                       preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
             self?.deleteNote(note: targetNote)

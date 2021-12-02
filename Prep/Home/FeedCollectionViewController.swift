@@ -18,7 +18,6 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
         
     //global variable of all items to fetch from the entity from CoreData
     private var categories = [Categ]()
-    var index = Int()
     
     let defaults = UserDefaults.standard
     
@@ -64,13 +63,6 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
             let settingsVC = segue.destination as! SettingsViewController
             settingsVC.input = "In settings now"
         }
-//        else if segue.identifier == "goToSpecificNotes" {
-//            let categoryString = self.categories[self.index].category
-//
-//            let detailsVC = segue.destination as? FeedSpecificNoteCollectionViewController
-//            detailsVC?.targetCategory = categoryString ?? ""
-//
-//        }
     }
 
     // MARK: UICollectionViewDataSource

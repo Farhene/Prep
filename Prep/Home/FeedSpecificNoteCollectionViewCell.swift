@@ -12,4 +12,5 @@ class FeedSpecificNoteCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var noteFromCategoryCell: UILabel!
     
+    @IBOutlet weak var date: UILabel!
 }

@@ -397,11 +397,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes from Category" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-c0-FPf">
-                                            <rect key="frame" x="8" y="8" width="184" height="212"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEd-Tr-x6H">
+                                            <rect key="frame" x="3" y="166" width="184" height="52"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="184" id="IsJ-H9-tsT"/>
-                                                <constraint firstAttribute="height" constant="212" id="SpZ-2s-6S9"/>
+                                                <constraint firstAttribute="width" constant="184" id="HGH-yQ-Y1E"/>
+                                                <constraint firstAttribute="height" constant="52" id="ceb-Na-l7U"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.064849492140000006" green="0.30763583709999998" blue="0.20014197580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes from Category" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-c0-FPf">
+                                            <rect key="frame" x="4" y="4" width="192" height="154"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="158" id="6vq-I8-arV"/>
+                                                <constraint firstAttribute="width" constant="184" id="twU-a4-Vd9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" red="0.064849492140000006" green="0.30763583709999998" blue="0.20014197580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -409,14 +419,18 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="5tg-c0-FPf" secondAttribute="trailing" constant="8" id="5v8-nI-XpK"/>
-                                        <constraint firstItem="5tg-c0-FPf" firstAttribute="leading" secondItem="EY3-H6-9Z3" secondAttribute="leading" constant="8" id="Ni6-lc-a7E"/>
-                                        <constraint firstAttribute="bottom" secondItem="5tg-c0-FPf" secondAttribute="bottom" id="R7h-Td-6hF"/>
-                                        <constraint firstItem="5tg-c0-FPf" firstAttribute="top" secondItem="EY3-H6-9Z3" secondAttribute="top" constant="8" id="gGp-sU-HxX"/>
+                                        <constraint firstAttribute="bottom" secondItem="sEd-Tr-x6H" secondAttribute="bottom" constant="2" id="B0Z-5b-iXd"/>
+                                        <constraint firstItem="5tg-c0-FPf" firstAttribute="leading" secondItem="EY3-H6-9Z3" secondAttribute="leading" constant="4" id="HQn-dk-jI3"/>
+                                        <constraint firstAttribute="trailing" secondItem="5tg-c0-FPf" secondAttribute="trailing" constant="4" id="OsB-qj-BXY"/>
+                                        <constraint firstItem="sEd-Tr-x6H" firstAttribute="leading" secondItem="EY3-H6-9Z3" secondAttribute="leading" constant="3" id="PlY-wP-TPh"/>
+                                        <constraint firstItem="sEd-Tr-x6H" firstAttribute="top" secondItem="5tg-c0-FPf" secondAttribute="bottom" constant="8" id="QHK-lX-bNy"/>
+                                        <constraint firstItem="sEd-Tr-x6H" firstAttribute="top" secondItem="5tg-c0-FPf" secondAttribute="bottom" constant="8" id="flf-tw-YLK"/>
+                                        <constraint firstItem="5tg-c0-FPf" firstAttribute="top" secondItem="EY3-H6-9Z3" secondAttribute="top" constant="4" id="r6d-bg-HsS"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="200" height="220"/>
                                 <connections>
+                                    <outlet property="date" destination="sEd-Tr-x6H" id="2VT-dB-ih3"/>
                                     <outlet property="noteFromCategoryCell" destination="5tg-c0-FPf" id="aZZ-RG-Cho"/>
                                 </connections>
                             </collectionViewCell>
@@ -664,6 +678,9 @@
                                         <color key="value" red="0.50471535570000003" green="0.55050886509999997" blue="0.96848052740000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="l7k-Ij-75t" id="Pr8-Jp-GRF"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="akh-Jj-UJG"/>
@@ -683,7 +700,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="calendarView" destination="xqe-nc-dN6" id="evF-l9-6xO"/>
+                        <outlet property="calendar" destination="xqe-nc-dN6" id="klv-uO-G6J"/>
+                        <outlet property="calendarView" destination="xqe-nc-dN6" id="fgZ-f5-y4X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4J-jS-8Me" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

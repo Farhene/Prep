@@ -9,13 +9,4 @@ target 'Prep' do
 
 pod 'FSCalendar'
 
-  target 'PrepTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'PrepUITests' do
-    # Pods for testing
-  end
-
 end
