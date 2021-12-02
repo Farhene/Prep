@@ -76,6 +76,23 @@ class DatedCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let targetNote = selectedDateNotes[indexPath.row]
+        
+        let sheet = UIAlertController(title: "\(targetNote.body ?? "nil")",
+                                      message: "Delete this note?",
+                                      preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        sheet.addAction(UIAlertAction(title: "Delete Note", style: .destructive, handler: { [weak self] _ in
+                self?.deleteNote(note: targetNote)
+            }))
+        
+        present(sheet, animated: true)
+    }
+    
+    // ---------- Manipulating Core Data entity here
+    
     func getNotesFromDate(date: Date){
         do {
             totalNotes = try context.fetch(Note.fetchRequest())
