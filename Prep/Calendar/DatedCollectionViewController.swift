@@ -7,6 +7,10 @@
 
 import UIKit
 
+//this one has its own delegates
+// it delegates to its boss
+// make sure the popup has a navigation bar
+
 class DatedCollectionViewController: UICollectionViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

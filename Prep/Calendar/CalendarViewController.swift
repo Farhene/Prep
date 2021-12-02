@@ -11,6 +11,13 @@
 import UIKit
 import FSCalendar
 
+// Worker
+// listens on the datedcollectionview delegates and responds accordingly.
+// if it hears that dated collection controller (deleted or added event), reflect that change in the calendar collection
+// don't trust the datedcollection view on the change only, still depend on the CoreData to check change
+// calendar view controller owns it
+
+
 protocol CalendarViewControllerDelegate {
     func dateClicked(_ string: String)
     

@@ -7,13 +7,16 @@
 
 import UIKit
 
-
 class FeedSpecificNoteCollectionViewController: UICollectionViewController {
 
     //helps to deal with objects in the CoreData database
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let defaults = UserDefaults.standard
+    
+    let formatter = DateFormatter()
+    var components = DateComponents()
+
     private var categoryList = [Categ]()
     private var notesList = [Note]()
     var noteNSSet = NSSet()
@@ -70,23 +73,20 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
     
         let note = notesList[indexPath.row]
         
-        cell.noteFromCategoryCell?.text = note.body
-        
-        let formatter = DateFormatter()
+        //setting the date style for the cells
         formatter.dateFormat = "MM-dd-YYYY"
         let dateStart = formatter.string(from: note.startDate!)
-        
-        formatter.dateFormat = "MM-dd-YYYY"
         let dateEnd = formatter.string(from: note.endDate!)
         
-        var components = DateComponents()
         components.month = 1
         components.day = 1
         components.year = 2000
         components.hour = 1
-        
         let noDate =  Calendar.current.date(from: components)
         
+        //configuring cell's body and date labels
+        cell.noteFromCategoryCell?.text = note.body
+
         if(dateStart != dateEnd && note.startDate != noDate) {
             cell.date?.text = "\(dateStart) - \(dateEnd)"
         }
@@ -100,15 +100,11 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         let mode = (defaults.string(forKey: "theme") ?? "no color") as String
 
         if (mode == "light") {
-            // Apply your light theme
             cell.date?.textColor = UIColor.darkestTeal
         }
         else if(mode == "dark"){
-            // Apply your dark theme.
             cell.date?.textColor = UIColor.lightestTeal
         }
-        
-        
         
         cell.noteFromCategoryCell?.backgroundColor = UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
         
@@ -140,7 +136,6 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
                     break;
                 }
             }
-            
             //convert NSSet to Array
             notesList = noteNSSet.toArray()
             self.collectionView.reloadData()
@@ -153,7 +148,7 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
     func deleteNote(note: Note){
         
         context.delete(note)
-        
+
         do {
             try context.save()
             self.collectionView.reloadData()
