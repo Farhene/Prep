@@ -12,18 +12,19 @@ import UIKit
 import FSCalendar
 
 protocol CalendarViewControllerDelegate {
-    func eventDateClicked(_ string: String)
+    func dateClicked(_ string: String)
     
     func didDeleteEvent(_ note: Note)
 }
 
 
-class CalendarViewController: UIViewController, FSCalendarDelegate {
+class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     var delegate : CalendarViewControllerDelegate?
     
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet var calendar: FSCalendar!
+    let formatter = DateFormatter()
     
     private var allNotes = [Note]()
     private var datedNotes = [Note]()
@@ -38,8 +39,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         
         updateTheme()
         getDatedNotes()
-                
+    
+        calendar.dataSource = self
         calendar.delegate = self
+        calendar.scrollDirection = .vertical
+        calendar.allowsMultipleSelection = false
     }
     
     func updateTheme(){
@@ -48,41 +52,66 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         if (mode == "light") {
             view.backgroundColor = UIColor.lightestTeal
             calendarView.backgroundColor = UIColor.lightTeal
-            
+            calendar.appearance.headerTitleColor = UIColor.darkestTeal
+            calendar.appearance.selectionColor = UIColor.dullPink
+            calendar.appearance.todayColor = UIColor.medTeal
         }
         else if(mode == "dark"){
             view.backgroundColor = UIColor.darkestTeal
             calendarView.backgroundColor = UIColor.darkTeal
+            calendar.appearance.headerTitleColor = UIColor.lightestTeal
+            calendar.appearance.selectionColor = UIColor.lightLavender
+            calendar.appearance.todayColor = UIColor.dullMint
         }
+    }
+    
+    //---------------------------- Manipulating Calendar here
+
+    
+    //user cannot scroll to previous months
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
+        formatter.dateFormat = "yyyy-MM-dd"
         let dateChosenString = formatter.string(from: date)
-        //only call delegate if event is clicked
-        //code needed here
-        delegate?.eventDateClicked(dateChosenString)
-        
-        //here I plan to get the dated notes below calendar perhaps hmmmm
-        getSpecificNote(string: dateChosenString)
-    }
-    
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
-        let dateString = formatter.string(from: date)
-        
-        print("eventDates: ", eventDates)
+        print("\(dateChosenString)")
 
+        //delegate protocol method used here
+        delegate?.dateClicked(dateChosenString)
         
-        if self.eventDates.contains(dateString){
-            print("true!")
-            return 1
+        var datedGo = false
+        
+        for i in eventDates{
+            if(i == dateChosenString){
+                datedGo = true
+                break
+            }
         }
-        return 0
+        
+        if(datedGo){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "goToDatedNotes") as! DatedCollectionViewController
+            vc.date = date
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
     
+    //borrowed from https://www.youtube.com/watch?v=FipNDF7g9tE in order to mimic event numbers!
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        formatter.dateFormat = "yyyy-MM-dd"
+        for i in eventDates{
+            guard let eventData = formatter.date(from: i) else {return nil}
+                if date.compare(eventData) == .orderedSame {
+                    return .red
+                }
+        }
+        return nil
+    }
+    
+
     //---------------------------- Manipulating Notes here
             
     func getDatedNotes() {
@@ -111,15 +140,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 
     
         for j in datedNotes {
-            formatter.dateFormat = "MM-dd-YYYY"
+            formatter.dateFormat = "yyyy-MM-dd"
             eventDates.append(formatter.string(from: j.startDate!))
         }
-    }
-    
-    
-    func getSpecificNote(string: String){
-        print("date is: ", string)
-
+        
+        print("eventDates: ", eventDates)
     }
     
     func deleteNote(note: Note){
@@ -137,7 +162,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToUndatedNotes" {
             let undatedNotesVC = segue.destination as! UndatedNotesTableViewController
@@ -147,7 +171,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
 }
 
 extension CalendarViewController: CalendarViewControllerDelegate {
-    func eventDateClicked(_ string: String){
+    func dateClicked(_ string: String){
         print("You clicked on the following date with one or more events!")
     }
     

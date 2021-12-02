@@ -332,7 +332,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAB-9L-3Iq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAB-9L-3Iq">
                                             <rect key="frame" x="8" y="8" width="112" height="120"/>
                                             <color key="backgroundColor" red="0.67314221456850332" green="1" blue="0.75504846087856625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <gestureRecognizers/>
@@ -373,7 +373,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcR-wG-kha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4837.68115942029" y="-739.28571428571422"/>
+            <point key="canvasLocation" x="5510" y="-739"/>
         </scene>
         <!--Feed Specific Note Collection View Controller-->
         <scene sceneID="VoZ-9m-6cY">
@@ -444,7 +444,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMs-Hs-pae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5644.9275362318849" y="-739.28571428571422"/>
+            <point key="canvasLocation" x="6152" y="-739"/>
         </scene>
         <!--Settings-->
         <scene sceneID="9Cv-NU-BGH">
@@ -679,6 +679,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="dataSource" destination="l7k-Ij-75t" id="Nh5-SD-LnG"/>
                                     <outlet property="delegate" destination="l7k-Ij-75t" id="Pr8-Jp-GRF"/>
                                 </connections>
                             </view>
@@ -706,7 +707,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4J-jS-8Me" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="-739"/>
+            <point key="canvasLocation" x="2992.753623188406" y="-739.28571428571422"/>
+        </scene>
+        <!--Dated Collection View Controller-->
+        <scene sceneID="W9e-IR-8tE">
+            <objects>
+                <collectionViewController storyboardIdentifier="goToDatedNotes" id="ZtK-52-JmX" customClass="DatedCollectionViewController" customModule="Prep" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U5U-8I-6HF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5ID-fV-ca2">
+                            <size key="itemSize" width="191" height="190"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DatedCellCollectionViewCell" id="Ap3-Lf-Ton" customClass="DatedCellCollectionViewCell" customModule="Prep" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="191" height="190"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dHU-7w-3UL">
+                                    <rect key="frame" x="0.0" y="0.0" width="191" height="190"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBO-Ve-kwp">
+                                            <rect key="frame" x="8" y="0.0" width="183" height="190"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <color key="textColor" red="0.064849492140000006" green="0.30763583709999998" blue="0.20014197580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="191" height="190"/>
+                                <connections>
+                                    <outlet property="notesLabel" destination="lBO-Ve-kwp" id="73R-v5-LXE"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ZtK-52-JmX" id="xtA-um-vKw"/>
+                            <outlet property="delegate" destination="ZtK-52-JmX" id="7l7-nU-Hon"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAp-42-S14" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3644.9275362318845" y="-739.28571428571422"/>
         </scene>
         <!--Undated Notes Table View Controller-->
         <scene sceneID="vmy-L9-joB">
@@ -786,7 +834,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iM-hh-6o4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4096" y="-739"/>
+            <point key="canvasLocation" x="4887" y="-739"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="Gkf-e3-aBt">

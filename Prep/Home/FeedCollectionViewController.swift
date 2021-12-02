@@ -122,13 +122,14 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
         }
         catch{
             //error
-            print("Error!")
+            print("Couldnt load all categories!")
         }
     }
     
     
     func deleteNote(category: Categ){
         
+        //deletes its NSSet but not itself
         context.delete(category)
         
         do {
@@ -136,7 +137,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
             self.collectionView.reloadData()
         }
         catch {
-            print("error!")
+            print("Cannot delete category!")
         }
     }
 

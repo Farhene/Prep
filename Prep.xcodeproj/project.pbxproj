@@ -30,6 +30,8 @@
 		E07A99F52758619E0005D3A5 /* Pods-Prep.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83250D9FD172138EDD7D3E0F /* Pods-Prep.debug.xcconfig */; };
 		E07A99F6275861A00005D3A5 /* Pods-Prep.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A743F2C9D652C89657A4E818 /* Pods-Prep.release.xcconfig */; };
 		E07A99F92758653E0005D3A5 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E07A99F82758653E0005D3A5 /* FSCalendar */; };
+		E07A99FD2759618A0005D3A5 /* DatedCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07A99FC2759618A0005D3A5 /* DatedCellCollectionViewCell.swift */; };
+		E07A99FF275961E50005D3A5 /* DatedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07A99FE275961E50005D3A5 /* DatedCollectionViewController.swift */; };
 		E07CBF3E274EB66D00728C66 /* AddNoteTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */; };
 		E0872DB327437B61003F2BB2 /* UndatedNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */; };
 		E0CBBFEC274313DA00304006 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CBBFEB274313DA00304006 /* SettingsViewController.swift */; };
@@ -79,6 +81,8 @@
 		E077E036274EB7FB0021ECD8 /* Categ+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Categ+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E077E037274EB7FB0021ECD8 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E07A99F02755971F0005D3A5 /* NSSetExtend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSetExtend.swift; sourceTree = "<group>"; };
+		E07A99FC2759618A0005D3A5 /* DatedCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatedCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		E07A99FE275961E50005D3A5 /* DatedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatedCollectionViewController.swift; sourceTree = "<group>"; };
 		E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndatedNotesTableViewController.swift; sourceTree = "<group>"; };
 		E0CBBFEB274313DA00304006 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E0CBBFED2743446F00304006 /* AddNoteTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				E002FA5C27331265001C7337 /* CalendarViewController.swift */,
 				E0872DB227437B61003F2BB2 /* UndatedNotesTableViewController.swift */,
 				E00E2701274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift */,
+				E07A99FC2759618A0005D3A5 /* DatedCellCollectionViewCell.swift */,
+				E07A99FE275961E50005D3A5 /* DatedCollectionViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -423,8 +429,10 @@
 				E0FB3CAB274C473F00A4C7A5 /* FeedSpecificNoteCollectionViewController.swift in Sources */,
 				E07A99F12755971F0005D3A5 /* NSSetExtend.swift in Sources */,
 				E002FA5927331228001C7337 /* RandomActivityViewController.swift in Sources */,
+				E07A99FF275961E50005D3A5 /* DatedCollectionViewController.swift in Sources */,
 				E002FA5327330511001C7337 /* FeedCollectionViewCell.swift in Sources */,
 				E002FA1E2727780B001C7337 /* AppDelegate.swift in Sources */,
+				E07A99FD2759618A0005D3A5 /* DatedCellCollectionViewCell.swift in Sources */,
 				E00E2702274C2B4B009DEE93 /* UndatedNotesTableViewCell.swift in Sources */,
 				E07A99ED27556B2B0005D3A5 /* Categ+CoreDataProperties.swift in Sources */,
 				E002FA5527330525001C7337 /* FeedCollectionViewController.swift in Sources */,

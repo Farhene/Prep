@@ -39,8 +39,6 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
                     
         let width = (view.frame.size.width - layout.minimumInteritemSpacing*2) / 3
         layout.itemSize = CGSize(width: width, height: width*1)
-        
-        
     }
     
     func updateTheme(){
@@ -81,11 +79,22 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         formatter.dateFormat = "MM-dd-YYYY"
         let dateEnd = formatter.string(from: note.endDate!)
         
-        if(dateStart != dateEnd) {
+        var components = DateComponents()
+        components.month = 1
+        components.day = 1
+        components.year = 2000
+        components.hour = 1
+        
+        let noDate =  Calendar.current.date(from: components)
+        
+        if(dateStart != dateEnd && note.startDate != noDate) {
             cell.date?.text = "\(dateStart) - \(dateEnd)"
         }
-        else{
+        else if(dateStart == dateEnd && note.startDate != noDate){
             cell.date?.text = "\(dateEnd)"
+        }
+        else{
+            cell.date?.text = "--"
         }
         
         let mode = (defaults.string(forKey: "theme") ?? "no color") as String

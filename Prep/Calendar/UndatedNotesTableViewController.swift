@@ -5,9 +5,6 @@
 //  Created by Farhene Sultana on 11/16/21.
 //
 
-// -------------- HELP!! CORE DATA PROBLEMS
-
-
 import UIKit
 
 class UndatedNotesTableViewController: UITableViewController {
