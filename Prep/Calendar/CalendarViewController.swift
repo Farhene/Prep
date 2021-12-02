@@ -5,16 +5,29 @@
 //  Created by Farhene Sultana on 11/3/21.
 //
 
+// Note: I followed Youtube tutorials on how to implement and use FSCalendar for most of this file.
+// The following functions pertaining to calendar, I learned from the videos
+
 import UIKit
 import FSCalendar
 
+protocol CalendarViewControllerDelegate {
+    func eventDateClicked(_ string: String)
+    
+    func didDeleteEvent(_ note: Note)
+}
+
+
 class CalendarViewController: UIViewController, FSCalendarDelegate {
+    
+    var delegate : CalendarViewControllerDelegate?
     
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet var calendar: FSCalendar!
     
     private var allNotes = [Note]()
     private var datedNotes = [Note]()
+    var eventDates = [String]()
 
     let defaults = UserDefaults.standard
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -47,14 +60,27 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-YYYY"
         let dateChosenString = formatter.string(from: date)
-        //print("\(dateChosenString)")
+        //only call delegate if event is clicked
+        //code needed here
+        delegate?.eventDateClicked(dateChosenString)
         
         //here I plan to get the dated notes below calendar perhaps hmmmm
         getSpecificNote(string: dateChosenString)
     }
     
-    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-YYYY"
+        let dateString = formatter.string(from: date)
         
+        print("eventDates: ", eventDates)
+
+        
+        if self.eventDates.contains(dateString){
+            print("true!")
+            return 1
+        }
+        return 0
     }
     
     //---------------------------- Manipulating Notes here
@@ -79,6 +105,15 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         catch {
             print("couldn't load the notes from Note")
         }
+        
+        //now add to string of dates
+        let formatter = DateFormatter()
+
+    
+        for j in datedNotes {
+            formatter.dateFormat = "MM-dd-YYYY"
+            eventDates.append(formatter.string(from: j.startDate!))
+        }
     }
     
     
@@ -93,13 +128,12 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
         
         do {
             try context.save()
+            delegate?.didDeleteEvent(note)
         }
         catch {
             print("error!")
         }
     }
-    
-    
 
     // MARK: - Navigation
 
@@ -110,6 +144,14 @@ class CalendarViewController: UIViewController, FSCalendarDelegate {
             undatedNotesVC.input = "In undated now"
         }
     }
-    
+}
 
+extension CalendarViewController: CalendarViewControllerDelegate {
+    func eventDateClicked(_ string: String){
+        print("You clicked on the following date with one or more events!")
+    }
+    
+    func didDeleteEvent(_ note: Note) {
+        print("You deleted \(note.body ?? "nil")!")
+    }
 }
