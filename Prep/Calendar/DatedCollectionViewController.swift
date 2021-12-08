@@ -11,6 +11,11 @@ import UIKit
 // it delegates to its boss
 // make sure the popup has a navigation bar
 
+protocol DatedCollectionControllerDelegate {
+    
+    func didDeleteNote(_ note: Note)
+}
+
 class DatedCollectionViewController: UICollectionViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -130,5 +135,23 @@ class DatedCollectionViewController: UICollectionViewController {
             print("deleted!")
         }
     }
+}
 
+extension DatedCollectionViewController: DatedCollectionControllerDelegate, CalendarViewControllerDelegate {
+    func dateClicked(_ string: String) {
+        print("You clicked on the following date with one or more events!")
+    }
+    
+    func didDeleteEvent(_ note: Note) {
+        print("You deleted \(note.body ?? "nil")!")
+    }
+    
+    func checkChangesOnNote(_ note: Note) {
+        print("changes happened")
+        //check if event exists in the date, and change the UI color of that date maybe
+    }
+    
+    func didDeleteNote(_ note: Note) {
+        print("You deleted \(note.body ?? "nil")!")
+    }
 }

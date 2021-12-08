@@ -22,6 +22,8 @@ protocol CalendarViewControllerDelegate {
     func dateClicked(_ string: String)
     
     func didDeleteEvent(_ note: Note)
+    
+    func checkChangesOnNote(_ note: Note)
 }
 
 
@@ -185,4 +187,10 @@ extension CalendarViewController: CalendarViewControllerDelegate {
     func didDeleteEvent(_ note: Note) {
         print("You deleted \(note.body ?? "nil")!")
     }
+    
+    func checkChangesOnNote(_ note: Note){
+        print("changes happened")
+        //check if event exists in the date, and change the UI color of that date maybe
+    }
+
 }
