@@ -102,8 +102,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         if(datedGo){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "goToDatedNotes") as! DatedCollectionViewController
+            let navBarOnModal: UINavigationController = UINavigationController(rootViewController: vc)
             vc.date = date
-            self.present(vc, animated: true, completion: nil)
+            self.present(navBarOnModal, animated: true, completion: nil)
         }
         
     }
@@ -135,10 +136,11 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             allNotes = try context.fetch(Note.fetchRequest())
             // filter out undated notes
             for i in allNotes {
-                if(i.startDate != date){
+                if(i.startDate != date && i.startDate != nil){
                     datedNotes.append(i)
                 }
             }
+            self.calendar.reloadData()
         }
         catch {
             print("couldn't load the notes from Note")
@@ -162,6 +164,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         do {
             try context.save()
+            self.calendar.reloadData()
             delegate?.didDeleteEvent(note)
         }
         catch {

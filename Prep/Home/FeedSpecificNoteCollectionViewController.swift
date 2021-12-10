@@ -75,26 +75,28 @@ class FeedSpecificNoteCollectionViewController: UICollectionViewController {
         
         //setting the date style for the cells
         formatter.dateFormat = "MM-dd-YYYY"
-        let dateStart = formatter.string(from: note.startDate!)
-        let dateEnd = formatter.string(from: note.endDate!)
+        if(note.startDate != nil){
+            let dateStart = formatter.string(from: note.startDate!)
+            let dateEnd = formatter.string(from: note.endDate!)
         
-        components.month = 1
-        components.day = 1
-        components.year = 2000
-        components.hour = 1
-        let noDate =  Calendar.current.date(from: components)
-        
-        //configuring cell's body and date labels
-        cell.noteFromCategoryCell?.text = note.body
+            components.month = 1
+            components.day = 1
+            components.year = 2000
+            components.hour = 1
+            let noDate =  Calendar.current.date(from: components)
+            
+            //configuring cell's body and date labels
+            cell.noteFromCategoryCell?.text = note.body
 
-        if(dateStart != dateEnd && note.startDate != noDate) {
-            cell.date?.text = "\(dateStart) - \(dateEnd)"
-        }
-        else if(dateStart == dateEnd && note.startDate != noDate){
-            cell.date?.text = "\(dateEnd)"
-        }
-        else{
-            cell.date?.text = "--"
+            if(dateStart != dateEnd && note.startDate != noDate) {
+                cell.date?.text = "\(dateStart) - \(dateEnd)"
+            }
+            else if(dateStart == dateEnd && note.startDate != noDate){
+                cell.date?.text = "\(dateEnd)"
+            }
+            else{
+                cell.date?.text = "--"
+            }
         }
         
         let mode = (defaults.string(forKey: "theme") ?? "no color") as String

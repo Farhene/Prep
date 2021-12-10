@@ -109,6 +109,7 @@ class FeedCollectionViewController: UICollectionViewController, UIGestureRecogni
         sheet.addAction(UIAlertAction(title: "Delete Category", style: .destructive, handler: { [weak self] _ in
                 self?.deleteNote(category: targetCategory)
             }))
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         
         present(sheet, animated: true)
     }

@@ -111,15 +111,14 @@ class AddNoteTViewController: UITableViewController {
         cell.backgroundColor = UIColor.clear
     }
     
-    
     // ---------------------------- Submitting WITHOUT Date --------------------------------
     
     @IBAction func skipTimeOption(_ sender: Any) {
+        
         if(self.categoryLabel.text != "" && self.bodyLabel.text != ""){
             //submits non-dated notes
             createNoteNoDate(category: categoryLabel.text!, body: bodyLabel.text!)
                         
-            //self.performSegue(withIdentifier: "addNoDate", sender: sender)
             let alert = UIAlertController(title: "Skip Time?", message: "You cannot undo this action", preferredStyle: .actionSheet)
 
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
@@ -178,7 +177,7 @@ class AddNoteTViewController: UITableViewController {
     
     // ---------------------------------- Submitting WITH Date --------------------------------
     @IBAction func submitButton(_ sender: Any) {
-        if(self.categoryLabel.text != "" && self.bodyLabel.text != ""){
+        if(self.categoryLabel.text != "" && self.bodyLabel.text != "" && startDateChosen.date <= endDateChosen.date){
             //submits dated notes
             createNotewithDate(category: categoryLabel.text!, body: bodyLabel.text!, startDate: startDateChosen.date, endDate: endDateChosen.date)
             //self.performSegue(withIdentifier: "addWithDate", sender: sender)
@@ -191,6 +190,11 @@ class AddNoteTViewController: UITableViewController {
             }))
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
 
+            self.present(alert, animated: true)
+        }
+        else if(startDateChosen.date > endDateChosen.date){
+            let alert = UIAlertController(title: "Cannot Save!", message: "Start date cannot be after End date!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }
         else{
